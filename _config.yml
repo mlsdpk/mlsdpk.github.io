@@ -45,8 +45,9 @@ comments:
     theme                : # "github-light" (default), "github-dark"
     issue_term           : # "pathname" (default)
   staticman:
-    branch               : "master"
-    endpoint             : "https://mlsdpk-staticman-app.herokuapp.com/v3/entry/github/mlsdpk/mlsdpk.github.io"
+    repository           : mlsdpk/mlsdpk.github.io
+    branch               : master
+    endpoint             : https://mlsdpk-staticman-app.herokuapp.com/v3/entry/github/
 reCaptcha:
   siteKey                :
   secret                 :
