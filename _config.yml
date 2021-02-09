@@ -47,7 +47,7 @@ comments:
   staticman:
     repository           : mlsdpk/mlsdpk.github.io
     branch               : master
-    endpoint             : https://mlsdpk-staticman-app.herokuapp.com/v3/entry/github/
+    endpoint             : https://mlsdpk-staticman.herokuapp.com/v3/entry/github/
 reCaptcha:
   siteKey                :
   secret                 :
