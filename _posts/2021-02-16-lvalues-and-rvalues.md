@@ -3,14 +3,14 @@ layout: blog-single
 classes: wide
 title:  "Lvalues and Rvalues in C++"
 excerpt: "Understanding the meaning of lvalues and rvalues in C++"
-date: 2021-01-30
-last_modified_at: 2021-02-09
-permalink: /blog/2021/01/30/lvalues-and-rvalues/
+date: 2021-02-16
+last_modified_at: 2021-02-16
+permalink: /blog/2021/02/16/lvalues-and-rvalues/
 tags:
   - c++
 ---
 
-In this blog post, we will try to understand the meaning behind the C++ concepts: **lvalues** and **rvalues**. We, C++ Developers, use to write a lot of C++ codes and are already familiar with and encounter these concepts mostly in compiler errors and warning messages. Since these are formal definitions, many of us do not immediately clear with their meanings. Now, let's try to understand these concepts informally. Having a good understanding of lvalues and rvalues in C++ is essential to deep dive into advanced features of C++11 like **rvalue references** and **move semantics**.
+In this blog post, we will try to understand the meaning behind the C++ concepts: **lvalues** and **rvalues**. We, C++ Developers, use to write a lot of C++ codes and are already familiar with and encounter these concepts mostly in compiler errors and warning messages. Since these are formal definitions, many of us do not immediately clear with their meanings. Now, let's try to understand these concepts informally. Having a good understanding of **lvalues** and **rvalues** in C++ is essential to deep dive into advanced features of C++11 like **rvalue references** and **move semantics**.
 {: .text-justify}
 
 Every [expression](https://en.cppreference.com/w/cpp/language/expressions) in C++ has a **type** and a **value category**. Prior to C++11, there were only two value categories: *lvalues* and *rvalues*. C++11 introduces three more value categories: **prvalue**, **xvalue**, and **glvalue**. In this post, we will fully ignore these value categories and only focus on **lvalue** and **rvalue**; however, if you want to learn more about these value categories, please refer to the original [cppreference](https://en.cppreference.com/w/cpp/language/value_category).
@@ -152,7 +152,7 @@ int main() {
 
 ## Conclusion
 
-What if we want to modify the reference value or we still need to improve the performance of our application using references, it will be a problem for us until C++11 was introduced. These several issues are addressed by introducing new features such as **rvalue references** and **move semantics** in C++11, which makes our lives easier. We will closely look at and discuss more about these topics in future blog posts.
+What if we want to modify the reference value or we still need to improve the performance of our application using references, it will be a problem for us until C++11 was introduced. These several issues are addressed by introducing new features such as **rvalue references** and **move semantics** in C++11, which makes our lives easier. We will closely look at and discuss more about these topics in the future blog posts.
 {: .text-justify}
 
 ## References
@@ -160,4 +160,4 @@ What if we want to modify the reference value or we still need to improve the pe
 * ["https://en.cppreference.com/w/cpp/language/value_category"](https://en.cppreference.com/w/cpp/language/value_category) ---<cite>cppreference</cite>
 * ["https://www.learncpp.com/cpp-tutorial/rvalue-references/"](https://www.learncpp.com/cpp-tutorial/rvalue-references/) ---<cite>learncpp</cite>
 * ["https://www.internalpointers.com/post/understanding-meaning-lvalues-and-rvalues-c"](https://www.internalpointers.com/post/understanding-meaning-lvalues-and-rvalues-c) ---<cite>internalpointers</cite>
-* ["https://drewcampbell92.medium.com/understanding-move-semantics-and-perfect-forwarding-987cf4dc7e27"](https://drewcampbell92.medium.com/understanding-move-semantics-and-perfect-forwarding-987cf4dc7e27) ---<cite>drewcampbell92(medium)</cite>
+* ["https://drewcampbell92.medium.com/understanding-move-semantics-and-perfect-forwarding-987cf4dc7e27"](https://drewcampbell92.medium.com/understanding-move-semantics-and-perfect-forwarding-987cf4dc7e27) ---<cite>medium</cite>
