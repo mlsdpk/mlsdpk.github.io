@@ -2,7 +2,7 @@
 layout: blog-single
 classes: wide
 title:  "Lvalues and Rvalues in C++"
-excerpt: "Understanding the meaning of lvalues and rvalues in C++"
+excerpt:
 date: 2021-02-16
 last_modified_at: 2021-02-16
 permalink: /blog/2021/02/16/lvalues-and-rvalues/
