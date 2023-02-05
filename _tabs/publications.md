@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-archive
-order: 4
+order: 2
 ---
 
 Here is where I keep track on all my publications. I started my research journey in early 2020, earning recognition with publications in top-tier journals and conferences. Most of my work is focused on motion planning and intelligent decision making of autonomous mobile robots. Check out my [Google Scholar profile](https://scholar.google.com/citations?user=j3UqDSoAAAAJ&hl=en) too.

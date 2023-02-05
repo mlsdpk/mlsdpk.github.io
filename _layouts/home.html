@@ -1,7 +1,21 @@
 ---
 layout: page
 # The Home page layout
+image:
+  path: assets/img/about/background_cover1.jpg
+  alt: image alternative text
 ---
+
+<br>
+<img src="assets/img/about/background_cover1.jpg" alt="" width="1200" height="630">
+<br>
+<br>
+<div>
+  <p>Hi! Welcome to my personal diary. I use this site to document my career journey, 
+    including my personal achievements, publications, and technical projects. 
+    I also share my thoughts on robotics through technical blog posts. 
+    If you want to know more about me, click <a href="/about">here</a>.</p>
+</div>
 
 {% assign pinned = site.posts | where: "pin", "true" %}
 {% assign default = site.posts | where_exp: "item", "item.pin != true and item.hidden != true" %}
