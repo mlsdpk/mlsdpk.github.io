@@ -1,12 +1,13 @@
 ---
-layout: page
+layout: publications
 icon: fas fa-archive
 order: 2
 ---
 
-Here is where I keep track on all my publications. I started my research journey in early 2020, earning recognition with publications in top-tier journals and conferences. Most of my work is focused on motion planning and intelligent decision making of autonomous mobile robots. Check out my [Google Scholar profile](https://scholar.google.com/citations?user=j3UqDSoAAAAJ&hl=en) too.
+<!-- Here is where I keep track on all my publications. I started my research journey in early 2020, earning recognition with publications in top-tier journals and conferences. Most of my work is focused on motion planning and intelligent decision making of autonomous mobile robots. Check out my [Google Scholar profile](https://scholar.google.com/citations?user=j3UqDSoAAAAJ&hl=en) too. -->
 
-- <b>sTetro-D: A deep learning based autonomous descending-stair cleaning robot</b><br>Veerajagadheswar Prabakaran, Anh Vu Le, Phone Thiha Kyaw, Prathap Kandasamy, Aung Paing, Rajesh Elara Mohan<br>Engineering Applications of Artificial Intelligence, 2023
+
+<!-- - <b>sTetro-D: A deep learning based autonomous descending-stair cleaning robot</b><br>Veerajagadheswar Prabakaran, Anh Vu Le, Phone Thiha Kyaw, Prathap Kandasamy, Aung Paing, Rajesh Elara Mohan<br>Engineering Applications of Artificial Intelligence, 2023
 
 - <b>An Autonomous Descending-Stair Cleaning Robot with RGB-D based Detection, Approaching, and Area coverage Process</b><br>Prabakaran Veerajagadheswar, Anh Vu Le, Phone Thiha Kyaw, Mohan Rajesh Elara, Aung Paing
 <br>International Conference on Intelligent Robots and Systems (IROS), 2022
@@ -25,4 +26,4 @@ Here is where I keep track on all my publications. I started my research journey
 
 - <b>Reinforcement Learning-Based Energy-Aware Area Coverage for Reconfigurable hRombo Tiling Robot</b><br>Anh Vu Le, Rizuwana Parween, Phone Thiha Kyaw, Rajesh Elara Mohan, Tran Hoang Quang Minh, Charan Satya Chandra Sairam Borusu<br>IEEE Access, 2020
 
-- <b>Hornbill: A Self-Evaluating Hydro-Blasting Reconfigurable Robot for Ship Hull Maintenance</b><br>Veerajagadheswar Prabakaran, Anh Vu Le, Phone Thiha Kyaw, Rajesh Elara Mohan, Prathap Kandasamy, Tan Nhat Nguyen, Madhukumar Kannan<br>IEEE Access, 2020
+- <b>Hornbill: A Self-Evaluating Hydro-Blasting Reconfigurable Robot for Ship Hull Maintenance</b><br>Veerajagadheswar Prabakaran, Anh Vu Le, Phone Thiha Kyaw, Rajesh Elara Mohan, Prathap Kandasamy, Tan Nhat Nguyen, Madhukumar Kannan<br>IEEE Access, 2020 -->

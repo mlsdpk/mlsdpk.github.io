@@ -1,0 +1,25 @@
+---
+layout: page
+---
+
+<div style="text-align: justify;">
+    Here is where I keep track on all my publications. I started my research journey in early 2020, 
+    earning recognition with publications in top-tier journals and conferences. 
+    Most of my work is focused on motion planning and intelligent decision making of autonomous mobile robots. 
+    Check out my <a href="https://scholar.google.com/citations?user=j3UqDSoAAAAJ&hl=en">Google Scholar profile</a> too.
+</div>
+
+<div class="publications">
+    {% for publication in site.publications %}
+    <div class="publication">
+        <div class="publication-cover">
+            <img src="{{ publication.cover_image }}" alt="{{ publication.title }}">
+        </div>
+        <div id="publication-details">
+            <h2><a href="{{ publication.link }}">{{ publication.title }}</a></h2>
+            <p class="publication-authors">{{ publication.authors }}</p>
+            <p class="publication-venue"><i>{{ publication.venue }}, {{ publication.year }}</i></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
