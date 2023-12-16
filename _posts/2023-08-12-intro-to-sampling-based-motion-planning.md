@@ -6,25 +6,14 @@ tags: [path planning, algorithms]
 comments: true
 published: true
 math: true
+img_path: /assets/img/posts/robotics/
 ---
 <div style="display: flex; margin-bottom: 20px;">
-    <img src="/assets/img/posts/robotics/empty_map.gif" style="flex: 1; padding-right: 5px;">
-    <img src="/assets/img/posts/robotics/map_with_single_cube.gif" style="flex: 1; padding-right: 5px;">
-    <img src="/assets/img/posts/robotics/map_with_many_homotopy_classes.gif" style="flex: 1; padding-right: 5px;">
-    <img src="/assets/img/posts/robotics/map_with_single_narrow_passage_gap.gif" style="flex: 1;">
+    <img src="empty_map.gif" style="flex: 1; padding-right: 5px;">
+    <img src="map_with_single_cube.gif" style="flex: 1; padding-right: 5px;">
+    <img src="map_with_many_homotopy_classes.gif" style="flex: 1; padding-right: 5px;">
+    <img src="map_with_single_narrow_passage_gap.gif" style="flex: 1;">
 </div>
-
-<!-- Are you ready to dive into the fascinating world of robots, algorithms, and the art of finding paths through complex terrains? If your answer is a resounding "heck yeah!" then you're in for a treat, because we're about to embark on a journey through the realm of sampling-based motion planning algorithms.
-{: .text-justify}
-
-Imagine you're in a maze, and you want to find your way to the exit. Robots face similar challenges when they need to move from point A to point B through complex spaces. Or imagine a robot arm that needs to pick up an object from one location and place it in another location. It's not as simple as connecting the dots on a piece of paper, right? That's where the magic of motion planning comes into play.
-{: .text-justify}
-
-In the world of motion planning, there are various types of algorithms floating around in the literature. You might have come across one called A\*. Yep, it falls under the motion planning category too. Some folks even call it a graph-based or graph-search algorithm since it's all about graphs and is used in loads of different applications. Now, compared to these graph-loving algorithms like Dijkstra or A\*, there's a different gang called sampling-based motion planning algorithms. The cool thing is, they don't really need a graph ready to go. They roll with it, building their search graphs and trees on the fly. Plus, they also have many algorithmic advantages over graph-based ones, especially in high-dimensional state spaces. Don't worry if the techie words I just dropped sound like gibberish. I promise, I'll make everything crystal clear as we go through this adventure.
-{: .text-justify}
-
-Now, to wrap up this introduction, we're about to unravel the secrets of one of the most accessible and exciting motion planning algorithms in the world of robotics: the RRT Algorithm, or Rapidly-exploring Random Trees for the acronym enthusiasts. As we explore the RRT algorithm, we'll also touch on some cool variations and real-world uses. This algorithm isn't just a theoretical concept – it's a tool that real robots use to move around safely and smoothly. And guess what? This article is just the opening act! We're kicking off a series of articles that won't just stop at RRT – we're diving into the deep end of the algorithm pool to explore the latest and greatest sampling-based techniques. So, get ready to unravel the magic behind the realm of sampling-based motion planning algorithms, especially the RRT algorithm.
-{: .text-justify} -->
 
 The primary motivation for developing the RRT algorithm is to address kinodynamic systems in high-dimensional state spaces. These systems usually aim to generate open-loop trajectories that satisfy global obstacle constraints and local differential constraints, which are valuable in a wide variety of robotic applications. I won't dive into too many details on the literature here, but if you are interested, I highly encourage you to read the original RRT papers [1][2]. There, you can find an extensive literature review and a solid background on how the authors' ideas are built on a large foundation of related research.
 {: .text-justify}
@@ -39,7 +28,43 @@ State space typically refers to the set of all possible states that a system can
 
 On the other hand, the configuration space, also referred to as C-space, is a bit more specialized. It specifically refers to the set of all possible configurations that a system can have, without considering the details of how the system moves between configurations. In simpler terms, it's a more abstract representation that focuses on the different possible arrangements of the system.
 
-We use the notation $C$ to denote the configuration space (C-space). The expression $q \in C$ is commonly used to represent a configuration of a system within C-space. The symbol $X$ is used to represent the state space, in which a state, $x \in X$, can be expressed as $x = (q, \phantom{.}\smash{\dot{q}}, \phantom{.}\smash\ldots)$, i.e., it may include higher order derivatives as necessary, depending on the problem's state space.
+We use the notation $C$ to denote the configuration space (C-space). The expression $q \in C$ is commonly used to represent a configuration of a system within C-space. The symbol $X$ is used to represent the state space, in which a state, $x \in X$, can be expressed as $x = (q, \phantom{.}\smash{\dot{q}}, \phantom{.}\smash\ldots)$, i.e., it may include higher order derivatives as necessary, depending on the problem domain.
+
+In order to simplify things here, I'm going to limit our problem domain into holonomic planning (i.e., there will be no differential constraints). Therefore, our planning state space can be expressed as in one variable $q$, i.e., $x = (q)$, where each $q \in C$ can be position and orientation of a geometric body of the robot in space.
+
+## Algorithm
+
+The following pseudocode illustrates the basic concepts of the RRT algorithm.
+
+{% include pseudocode.html id="1" code="
+\begin{algorithm}
+\caption{RRT}
+\begin{algorithmic}
+
+\STATE $V \gets \{ \mathbf{x}_{start} \}; E \gets \emptyset; G \gets (V, \, E) $;
+
+\FOR{$i = 1$ \TO $q$}
+    \STATE $\mathbf{x}_{rand} = \text{Sample}$;
+    \STATE $\mathbf{x}_{nearest} = \text{Nearest}(\mathbf{x}_{rand})$;
+    \STATE $\mathbf{x}_{new} = \text{Steer}(\mathbf{x}_{nearest}, \mathbf{x}_{rand})$;
+    \IF{$\text{CollisionFree}(\mathbf{x}_{nearest}, \mathbf{x}_{new})$}
+        \STATE $\text{Parent}(\mathbf{x}_{new}) \gets \mathbf{x}_{nearest}$;
+        \STATE $V \gets V \cup \{ \mathbf{x}_{\text{new}} \}$;
+        \STATE $E \gets E \cup \{ \mathbf{x}_{\text{nearest}}, \mathbf{x}_{\text{new}} \}$;
+    \ENDIF
+\ENDFOR
+
+\end{algorithmic}
+\end{algorithm}
+" %}
+
+RRT searches for a solution path to a planning problem by constructing a tree through a collision-free space from the start configuration state to the goal configuration state. This tree is incrementally built by randomly drawing samples from the problem domain.
+
+We will use the notation $G$ to represent the tree, consisting of a set of vertices $V$ and edges $E$. First, the tree is initialized with a start configuration $x_{start}$ in the vertex set. In each iteration, the algorithm starts the tree construction process by randomly sampling a collision-free state $x_{rand}$ in the problem state space (Line 3). The randomly sampled state is then used to query the nearest neighbor vertex in the tree (Line 4). The function **Steer** in Line 5 generates a new state $x_{new}$ by making a motion toward $x_{rand}$ with a control input for some time increment. Here, we will assume the simple holonomic planning scenario with no differential constraints. Therefore, the potential new vertex $x_{new}$ can be simply connected from the nearest vertex $x_{nearest}$, limited by the distance $\Delta{d}$. The algorithm then performs collision checking of the edge $(x_{nearest}, x_{new})$ (Line 6). If this edge is collision-free, $x_{new}$ is added to the vertex set along with the edge, where $x_{new}$'s parent being $x_{nearest}$ (Lines 7-9). This vertex extension process of the RRT algorithm is illustrated in the following figure.
+
+![Tnearest_vertex_selection](vertex_extension_process.jpeg){: w="400" h="400" }
+_Vertex extension step of the RRT algorithm (aka EXTEND operation)_
+
 
 
 ## References
