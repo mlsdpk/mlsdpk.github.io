@@ -29,32 +29,52 @@ $$
 A random vector $\mathbf{X}$ is a list of $n$ random variables defined in an $n \times 1$ (column) vector form:
 
 $$
-
 \mathbf{X} = \left[ \begin{array}{c}
 X_1 \\
 X_2 \\
 \vdots \\
 X_n
 \end{array} \right]
-
 $$
+
+### Expectation (mean)
 
 The expectation (mean) of the random vector $\mathbf{X}$ is given by:
 
 $$
-
 E[\mathbf{X}] = \left[ \begin{array}{c}
 E[X_1] \\
 E[X_2] \\
 \vdots \\
 E[X_n]
 \end{array} \right]
-
 $$
 
 The linearity properties of expectation can be applied to random vectors as well, for example:
 
 $$
-E[A\mathbf{X}] = A \cdot E[\mathbf{X}]\\
+E[A\mathbf{X}] = A \cdot E[\mathbf{X}]
+$$
+
+$$
 E[A\mathbf{X} + b] = A \cdot E[\mathbf{X}] + b
+$$
+
+### Covariance Matrix
+
+The covariance matrix of the random vector $\mathbf{X}$ is given by:
+
+$$
+Cov(\mathbf{X}) = E\left[ (\mathbf{X} - E[\mathbf{X}])(\mathbf{X} - E[\mathbf{X}])^\intercal \right]
+$$
+
+It is an $n \times n$ symmetric matrix whose $(i, j)$ element is $Cov(X_i, X_j)$ and is a generalization of the variance of a random variable, i.e., $Var(X) = E[X^2] - (E[X])^2$. The $i^\text{th}$ diagonal element is the variance of $X_i$:
+
+$$
+Cov(\mathbf{X}) = \left[ \begin{array}{c}
+Var(X_1) & Cov(X_1, X_2) & \cdots & Cov(X_1, X_n) \\
+Cov(X_2, X_1) & Var(X_2) & \cdots & Cov(X_2, X_n) \\
+\vdots & \vdots & \ddots & \vdots \\
+Cov(X_n, X_1) & Cov(X_n, X_2) & \cdots & Var(X_n)
+\end{array} \right]
 $$
