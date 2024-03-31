@@ -4,6 +4,7 @@ date: 2024-03-31
 categories: [Statistics]
 tags: [c++, math]
 comments: true
+math: true
 published: true
 ---
 # Prerequisites
