@@ -78,3 +78,29 @@ Cov(X_2, X_1) & Var(X_2) & \cdots & Cov(X_2, X_n) \\
 Cov(X_n, X_1) & Cov(X_n, X_2) & \cdots & Var(X_n)
 \end{array} \right]
 $$
+
+### Affine Transformations
+
+An affine transformation of the random vector involves a linear transformation followed by a translation.
+
+Let $A$ be an $m \times n$ linear transformation matrix and $b$ be $m \times 1$ vector. If we apply this transformation to a random vector $\mathbf{X}$ and translated by a vector $b$, the $m \times 1$ affine transformed vector is given by $\mathbf{Y} = A \cdot \mathbf{X} + b$. Therefore, for the expectation (mean) of this transformed vector, we have:
+
+$$
+E[\mathbf{Y}] = E[A \cdot \mathbf{X} + b]
+$$
+
+If $\mathbf{Y}$ is a linear combination of $\mathbf{X}$, by linearity of expectation, we have:
+
+$$
+E[\mathbf{Y}] = A \cdot E[\mathbf{X}] + b
+$$
+
+For the covariance matrix, there is no effect of translation as it does not alter the dispersion or shape of the distribution. Therefore, we have:
+
+$$\begin{aligned}
+Cov(\mathbf{Y}) = Cov(\mathbf{A \mathbf{X}}) &= E\left[ (A \mathbf{X} - E[A \mathbf{X}])(A \mathbf{X} - E[A \mathbf{X}])^\intercal \right] \\\
+&= E\left[ (A \mathbf{X} - AE[\mathbf{X}])(A \mathbf{X} - AE[\mathbf{X}])^\intercal \right] \\\
+&= E\left[ A(\mathbf{X} - E[\mathbf{X}])(\mathbf{X} - E[\mathbf{X}])^\intercal A^\intercal \right] \\\
+&= A \, E\left[(\mathbf{X} - E[\mathbf{X}])(\mathbf{X} - E[\mathbf{X}])^\intercal \right] A^\intercal \\\
+&= A \, Cov(\mathbf{X}) \, A^\intercal
+\end{aligned}$$
