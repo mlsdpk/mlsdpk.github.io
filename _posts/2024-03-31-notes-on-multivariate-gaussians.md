@@ -104,3 +104,28 @@ Cov(\mathbf{Y}) = Cov(\mathbf{A \mathbf{X}}) &= E\left[ (A \mathbf{X} - E[A \mat
 &= A \, E\left[(\mathbf{X} - E[\mathbf{X}])(\mathbf{X} - E[\mathbf{X}])^\intercal \right] A^\intercal \\\
 &= A \, Cov(\mathbf{X}) \, A^\intercal
 \end{aligned}$$
+
+# The Multivariate Normal Distribution
+
+The random vector $\mathbf{X}$ has the *multivariate normal (or Gaussian) distribution* if the random variables $X_1$, $X_1$, $\dots$, $X_n$ are *jointly normal* or *jointly Gaussian*. Then, it has the following joint density function:
+
+$$
+p(\mathbf{X} \mid \mu, \Sigma) = \frac{1}{(\sqrt{2 \pi})^{n}(\sqrt{\text{det}(\Sigma)})}\,
+\text{exp}\left(-\frac{1}{2}(\mathbf{X} - \mu)^\intercal {\Sigma}^{-1} (\mathbf{X} - \mu)\right)
+$$ 
+
+where $\mu = E[\mathbf{X}]$ is an expectation (mean) vector of dimension $n$ and $\Sigma = Cov(\mathbf{X})$ is a $n \times n$ symmetric, positive semi-definite covariance matrix.
+
+It has the *standard multivariate normal distribution* if the random variables $X_1$, $X_1$, $\dots$, $X_n$ are independent identically distributed standard normal, i.e., $\mu = 0$ and $\Sigma = I_n$, the $n \times n$ identity matrix:
+
+$$
+p(\mathbf{X} \mid \mu = 0, \Sigma = I_n) = \frac{1}{(\sqrt{2 \pi})^{n}}\,
+\text{exp}\left(-\frac{1}{2}(\mathbf{X})^\intercal (\mathbf{X})\right)
+$$ 
+
+If $n$ becomes 1, this density formula above reduces to the univariate Gaussian distribution with mean $\mu$ and variance $\sigma^2$:
+
+$$
+p(X \mid \mu, \sigma^2) = \frac{1}{\left(\sqrt{2 \pi \sigma^2}\right)}\,
+\text{exp}\left( -\frac{1}{2 \sigma^2}(X - \mu)^2 \right)
+$$ 
