@@ -6,6 +6,7 @@ tags: [c++, math]
 comments: true
 math: true
 published: true
+img_path: /assets/img/posts/statistics/
 ---
 # Prerequisites
 
@@ -114,7 +115,7 @@ p(\mathbf{X} \mid \mu, \Sigma) = \frac{1}{(\sqrt{2 \pi})^{n}(\sqrt{\text{det}(\S
 \text{exp}\left(-\frac{1}{2}(\mathbf{X} - \mu)^\intercal {\Sigma}^{-1} (\mathbf{X} - \mu)\right)
 $$ 
 
-where $\mu = E[\mathbf{X}]$ is an expectation (mean) vector of dimension $n$ and $\Sigma = Cov(\mathbf{X})$ is a $n \times n$ symmetric, positive semi-definite covariance matrix.
+where $\mu = E[\mathbf{X}]$ is an expectation (mean) vector of dimension $n$ and $\Sigma = Cov(\mathbf{X})$ is a $n \times n$ symmetric, positive semi-definite covariance matrix. We can also write this as $\mathbf{X} \sim \mathcal{N}(\mu, \Sigma)$.
 
 It has the *standard multivariate normal distribution* if the random variables $X_1$, $X_1$, $\dots$, $X_n$ are independent identically distributed standard normal, i.e., $\mu = 0$ and $\Sigma = I_n$, the $n \times n$ identity matrix:
 
@@ -129,3 +130,15 @@ $$
 p(X \mid \mu, \sigma^2) = \frac{1}{\left(\sqrt{2 \pi \sigma^2}\right)}\,
 \text{exp}\left( -\frac{1}{2 \sigma^2}(X - \mu)^2 \right)
 $$ 
+
+The graph of a Gaussian is a characteristic symmetric "bell curve" shape. Here, the argument of the expotential function $-\frac{1}{2 \sigma^2}(X - \mu)^2$ is a quadratic function of variable $X$. And since the coefficient of the quadratic term is negative, the parabola opens downwards:
+
+![Normal_Distribution_PDF](gaussians.png){: w="500" h="500" }
+_Normalized Gaussian curves with expected value $\mu$ and variance $\sigma^2$ (Source: wikipedia)._
+
+The coefficient in front $\frac{1}{\left(\sqrt{2 \pi \sigma^2}\right)}$ is the normalizing constant which is used to ensure that the density function has the total probabilty of one, or in other words, its integral is 1:
+
+$$
+\int_{-\infty}^{\infty} p(X \mid \mu, \sigma^2) = \frac{1}{\left(\sqrt{2 \pi \sigma^2}\right)}\,
+\int_{-\infty}^{\infty} \text{exp}\left( -\frac{1}{2 \sigma^2}(X - \mu)^2 \right) = 1
+$$
