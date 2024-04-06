@@ -142,3 +142,8 @@ $$
 \int_{-\infty}^{\infty} p(X \mid \mu, \sigma^2) = \frac{1}{\left(\sqrt{2 \pi \sigma^2}\right)}\,
 \int_{-\infty}^{\infty} \text{exp}\left( -\frac{1}{2 \sigma^2}(X - \mu)^2 \right) = 1
 $$
+
+The same also applies to the multivariate Gaussian densities. The shape of the density is determined by the quadratic form $-\frac{1}{2}(\mathbf{X} - \mu)^\intercal {\Sigma}^{-1} (\mathbf{X} - \mu)$ and the level surfaces are ellipses and ellipsoids.
+
+![Confidence_Levels](confidence_levels.png){: w="800" h="500" }
+_2D Gaussians with different confidence levels (i.e. 68%, 90%, 95%) where the random variables are (1) positively correlated $\rho>0$, (2) independent $\rho=0$, and (3) negatively correlated $\rho<0$._
