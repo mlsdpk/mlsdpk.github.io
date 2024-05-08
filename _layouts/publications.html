@@ -10,7 +10,8 @@ layout: page
 </div>
 
 <div class="publications">
-    {% for publication in site.publications %}
+    {% assign publications = site.publications | sort: 'date' | reverse %}
+    {% for publication in publications %}
     <div class="publication">
         <div class="publication-cover">
             <img src="{{ publication.cover_image }}" alt="{{ publication.title }}">
