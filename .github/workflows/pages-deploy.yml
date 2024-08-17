@@ -46,7 +46,7 @@ jobs:
 
       - name: Move to assets
         run: |
-          cp cv-tools/output/cv.pdf $GITHUB_WORKSPACE/assets/docs/cv/cv.pdf
+          cp cv-tools/output/output.pdf $GITHUB_WORKSPACE/assets/docs/cv/cv.pdf
 
   build:
     runs-on: ubuntu-latest
