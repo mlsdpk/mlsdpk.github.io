@@ -32,29 +32,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Debug - List Current Directory
-        run: ls -la
-
       - name: Clone cv-tools Repository
         run: |
           git clone https://github.com/mlsdpk/cv-tools.git
-          ls -la cv-tools
-
-      - name: Debug - List Directory Contents after Cloning cv-tools
-        run: ls -la
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
       - name: Build and Run Docker Container
         run: |
-          docker build -t cv-tools ./cv-tools
+          docker build -t cv-tools cv-tools/
           docker run --rm -v $(pwd):/workdir cv-tools ./run.sh -c /workdir/assets/docs/cv/config.yaml -b /workdir/assets/docs/cv/bibtex.bib
-        working-directory: ./cv-tools
 
       - name: Move to assets
         run: |
-          cp output/cv.pdf $GITHUB_WORKSPACE/assets/docs/cv/cv.pdf
+          cp cv-tools/output/cv.pdf $GITHUB_WORKSPACE/assets/docs/cv/cv.pdf
 
   build:
     runs-on: ubuntu-latest
