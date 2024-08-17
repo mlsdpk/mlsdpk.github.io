@@ -32,9 +32,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Debug - List Current Directory
+        run: ls -la
+
       - name: Clone cv-tools Repository
         run: |
           git clone https://github.com/mlsdpk/cv-tools.git
+          ls -la cv-tools
+
+      - name: Debug - List Directory Contents after Cloning cv-tools
+        run: ls -la
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
