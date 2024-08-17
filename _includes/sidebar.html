@@ -50,10 +50,10 @@
     {% endfor %}
 
     <!-- hardcoded CV tab -->
-    <li class="nav-item{% if 'assets/docs/cv.pdf' == page.url %}{{ " active" }}{% endif %}">
-      <a href="{{ 'assets/docs/cv.pdf' | relative_url }}" class="nav-link">
+    <li class="nav-item{% if 'assets/docs/cv/cv.pdf' == page.url %}{{ " active" }}{% endif %}">
+      <a href="{{ 'assets/docs/cv/cv.pdf' | relative_url }}" class="nav-link">
         <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
-        {% capture CV %}{{ 'assets/docs/cv.pdf' | split: '/' }}{% endcapture %}
+        {% capture CV %}{{ 'assets/docs/cv/cv.pdf' | split: '/' }}{% endcapture %}
 
         <span>{{ site.data.locales[site.lang].tabs.['CV'] | default: 'CV' | upcase }}</span>
       </a>

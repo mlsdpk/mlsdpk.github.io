@@ -1,0 +1,139 @@
+author_name: "Phone Thiha Kyaw"
+portfolio_url: "https://www.phonethk.com"
+orcid_id: "0000-0001-8790-8350"
+linkedin: "https://linkedin.com/in/phonethk"
+email: "mlsdphonethk@gmail.com"
+
+sections:
+  - type: education
+    content:
+    - university: "University of Portsmouth"
+      location: "Portsmouth, United Kingdom"
+      dates: "May 2022 - May 2023"
+      degree: "Bachelor of Engineering with Honours in Electronic Engineering"
+      honors: "First Class Honours"
+      thesis_title: "A Novel Any-angle Path Planning Algorithm \\\\on Non-uniform Grid Maps"
+      supervisor: "Prof. Thet Naing Oo"
+    - university: "Yangon Technological University"
+      location: "Yangon, Myanmar"
+      dates: "December 2015 - December 2021"
+      degree: "Mechatronics Engineering"
+      supervisor: "Prof. Theint Theint Thu"
+
+  - type: experience
+    content:
+    - name: "Research and Work Experience"
+      entity:
+        - organization: "Dyson, Singapore"
+          dates: "August 2024 - Present"
+          position: "Senior Software Engineer, Robotics"
+        - organization: "LionsBot International Pte Ltd, Singapore"
+          dates: "February 2022 - July 2024"
+          position: "Software Engineer, Autonomy"
+          responsibilities:
+            - "Led the development and strategic planning of key modules and infrastructure for the perception stack"
+            - "Provided leadership in reviewing, guiding, and training the team to improve overall code quality and performance"
+            - "Led the initiative to set up internal automated testing and tooling infrastructure to optimize development processes"
+            - "Contributed to the development of multiple patent-pending technologies"
+        - organization: "ROAR Lab"
+          dates: "October 2019 - December 2020"
+          position: "Research Intern"
+          supervisor: "Prof. Mohan Rajesh Elara"
+          responsibilities:
+            - "Published research articles on robotics, path planning, and computer vision"
+            - "Developed autonomy systems for various indoor and outdoor reconfigurable robots, including stair-
+climbing and wall-climbing robots"
+
+    - name: "Teaching and Volunteering"
+      entity:
+        - organization: "Computer Vision and Machine Learning Lab"
+          dates: "January 2021 - December 2021"
+          position: "Teaching Assistant"
+          supervisor: "Prof. Theint Theint Thu"
+          department: "Department of Mechatronic Engineering"
+          location: "Yangon Technological University, Myanmar"
+          responsibilities:
+            - "Instructor of [McE-51069](https://ytu-cvlab.github.io/mce-51069/) (AI \\& Computer Vision) online course"
+            - "Designed and delivered a comprehensive course curriculum focused on reinforcement learning"  
+        - organization: "Cluster of Science and Technology"
+          dates: "July 2017 - June 2018"
+          position: "President"
+          department: ""
+          location: "Yangon Technological University, Myanmar"
+          responsibilities:
+            - "Served as President of the student club 'Cluster of Science and Technology (CST)'"
+            - "Led the team for one year, overseeing activities aimed at keeping students updated on the latest developments in science and technology"
+            - "Contributed to the promotion of science and technology awareness within the university community, enhancing engagement and knowledge sharing"
+        - organization: "Lae Lar Technology Co., Ltd"
+          dates: "March 2018 - March 2020"
+          position: "Instructor"
+          department: ""
+          location: ""
+          responsibilities:
+            - "Designed and developed online courses on Robot Operating System (ROS) and Python programming language, empowering Myanmar students to stay updated with the latest trends in robotics"
+  
+  - type: experience
+    content:
+    - name: "Nanodegrees"
+      entity:
+        - organization: "Udacity C++ Nanodegree Program"
+          dates: "Graduated February 2021"
+          position: "Curriculum: OOP, Memory Management, Concurrency"
+        - organization: "Udacity Sensor Fusion Nanodegree Program"
+          dates: "Graduated March 2020"
+          position: "Curriculum: Lidar, Radar, Camera, Kalman Filters"
+
+  - type: skills
+    content:
+    - name: "Spoken Languages"
+      data: "English (Fluent), Burmese (Native)"
+    - name: "Programming Languages"
+      data: "C++, Python, Matlab, Javascript"
+    - name: "Tools and Technologies"
+      data: "ROS/ROS2, DDS, Qt, CMake, LATEX, Bash/Shell, Linux, Git, Jira, Confluence"
+
+  - type: bullets
+    title: "Honors and Awards"
+    description: ""
+    content:
+      - item: "Honorable Mention by Aung San Suu Kyi, the State Counselor of the Republic of the Union of Myanmar, 
+      during the 43rd Singapore Lecture, 2018, recognized for achieving 6th place,
+       the top among ASEAN countries in the World Robotics Competition"
+      - item: "Certificate of Honor Award, Ministry of Education Myanmar, 
+      recognition for achieving world rank 6th in the First Global Robotics Competition, 2017"
+      - item: "Certificate of Excellence Award, International FIRST Committee Association, 
+      recognized for outstand- ing representation of Team Myanmar and excellence in the Inaugural 2017 FIRST Global Challenge in Washington, DC"
+      - item: "Best Presenter Award, Autonomy Week 2022, LionsBot International Pte Ltd, Singapore"
+      - item: "Senior Championship Award, Myanmar STEM Competition, 2018-2019"
+
+  - type: bullets
+    title: "Professional Activities"
+    description: "Served/ing as a reviewer for"
+    content:
+      - item: "Journals"
+        subitems:
+          - "IEEE Robotics and Automation Letters (RA-L)"
+          - "IEEE Transactions on Automation Science and Engineering (T-ASE)"
+      - item: "Conferences"
+        subitems:
+          - "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
+
+  - type: newpage
+
+  - type: talks
+    content:
+    - name: "``Robotics TechTalk'', Invited talk, American Center Yangon, Myanmar."
+      month: "Mar."
+      year: "2024"
+    - name: "``Mobile Robot Kinematics'', Invited workshop, Laboratory of Robotics and AI (LORA), Yangon Technological University, Myanmar."
+      month: "Dec."
+      year: "2019"
+    - name: "``Engineering and Robotics'', Invited talk, Gakken Classroom Education Seminar, Myanmar."
+      month: "Jul."
+      year: "2019"
+    - name: "``Python Programming for beginners'', Invited workshop, MakerFest Myanmar."
+      month: "Feb."
+      year: "2019"
+    - name: "``Introduction to Python Programming'', Invited workshop, Barcamp TU Hinthada, Myanmar."
+      month: "Jul."
+      year: "2018"
