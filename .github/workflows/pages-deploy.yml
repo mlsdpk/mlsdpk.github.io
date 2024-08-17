@@ -42,7 +42,7 @@ jobs:
       - name: Build and Run Docker Container
         run: |
           docker build -t cv-tools cv-tools/
-          docker run --rm -v $(pwd):/workdir cv-tools ./run.sh -c /workdir/assets/docs/cv/config.yaml -b /workdir/assets/docs/cv/bibtex.bib
+          docker run --rm -v $(pwd):/workdir cv-tools ./cv-tools/run.sh -c assets/docs/cv/config.yaml -b assets/docs/cv/bibtex.bib
 
       - name: Move to assets
         run: |
