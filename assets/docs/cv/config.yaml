@@ -1,8 +1,23 @@
-author_name: "Phone Thiha Kyaw"
-portfolio_url: "https://www.phonethk.com"
-orcid_id: "0000-0001-8790-8350"
-linkedin: "https://linkedin.com/in/phonethk"
-email: "mlsdphonethk@gmail.com"
+heading:
+  name: "Phone Thiha Kyaw"
+
+subheading:
+  - type: links
+    content:
+      - name: "https://www.phonethk.com"
+        highlight: true
+        show_below: false
+      - name: "mlsdphonethk@gmail.com"
+        highlight: false
+        show_below: true
+  - type: socials
+    content:
+      - type: orcid_id
+        url: "0000-0001-8790-8350"
+        show_below: false
+      - type: linkedin
+        url: "https://linkedin.com/in/phonethk"
+        show_below: false
 
 sections:
   - type: education
@@ -12,7 +27,7 @@ sections:
       dates: "May 2022 - May 2023"
       degree: "Bachelor of Engineering with Honours in Electronic Engineering"
       honors: "First Class Honours"
-      thesis_title: "A Novel Any-angle Path Planning Algorithm \\\\on Non-uniform Grid Maps"
+      thesis_title: "A Novel Any-angle Path Planning Algorithm \non Non-uniform Grid Maps"
       supervisor: "Prof. Thet Naing Oo"
     - university: "Yangon Technological University"
       location: "Yangon, Myanmar"
@@ -137,3 +152,5 @@ climbing and wall-climbing robots"
     - name: "``Introduction to Python Programming'', Invited workshop, Barcamp TU Hinthada, Myanmar."
       month: "Jul."
       year: "2018"
+
+  - type: publications
