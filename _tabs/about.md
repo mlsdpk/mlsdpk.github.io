@@ -3,10 +3,11 @@ layout: page
 icon: fas fa-archive
 order: 1
 ---
+I’m a Senior Software Engineer at <a href="https://careers.dyson.com/en-gb/what-you-can-do/engineer/robotics/">Dyson</a>, where I work in the Upstream Robotics team. My main responsibility is to help design and maintain the entire high-level software stack and scalable distributed system architectures for Dyson’s next-generation robots. I focus on maintaining software quality and fostering a collaborative engineering culture across the team.
+{: .text-justify}
 
-![Desktop View](/assets/img/about/lb_iros2022.jpg){: }
-
-I'm a senior software engineer at an amazing company called <a href="https://www.lionsbot.com">LionsBot International</a>, where I develop high-performance autonomy systems for autonomous cleaning robots. With a strong focus on cutting-edge technology and a commitment to delivering exceptional results, I take great pride in ensuring our team adheres to coding best practices while providing guidance for their professional growth. My deep enthusiasm for the C++ programming language fuels my dedication to consistently enhance software quality and performance. At LionsBot, we deploy thousands of robots globally, and I'm proud to be part of this innovative work.
+![Desktop View](/assets/img/about/lb_iros2022.jpg){: .w-50 .right}
+Before joining Dyson, I worked at <a href="https://www.lionsbot.com">LionsBot International</a>, where I played a key role in developing high-performance autonomy systems for autonomous cleaning robots. I took great pride in ensuring our team adhered to software best practices while providing guidance for their professional growth. At LionsBot, we deployed thousands of robots globally, and I’m proud to have contributed to such innovative work.
 {: .text-justify}
 
 Originally pursuing a mechatronic engineering degree at Yangon Technological University, Myanmar in 2014, with an expected graduation in 2020, I encountered challenges due to the COVID pandemic and political events. As a result, I made the decision to transfer to the University of Portsmouth and enrolled in the final year Bachelor's degree program, majoring in Electronic Engineering. In 2023, I successfully graduated from the University of Portsmouth with first-class honours, marking a significant achievement in my academic journey.
