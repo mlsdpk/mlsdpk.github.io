@@ -7,7 +7,7 @@ subheading:
       - name: "https://www.phonethk.com"
         highlight: true
         show_below: false
-      - name: "mlsdphonethk@gmail.com"
+      - name: "phone.thiha@robotics.utias.utoronto.ca"
         highlight: false
         show_below: true
   - type: socials
@@ -22,10 +22,15 @@ subheading:
 sections:
   - type: education
     content:
+    - university: "University of Toronto"
+      location: "Toronto, Ontario"
+      dates: "January 2025 - Present"
+      degree: "Master of Applied Science (MASc) in Aerospace Science and Engineering"
+      supervisor: "Prof. Jonathan Kelly"
     - university: "University of Portsmouth"
       location: "Portsmouth, United Kingdom"
       dates: "May 2022 - May 2023"
-      degree: "Bachelor of Engineering with Honours in Electronic Engineering"
+      degree: "Bachelor of Engineering (BEng) with Honours in Electronic Engineering"
       honors: "First Class Honours"
       thesis_title: "A Novel Any-angle Path Planning Algorithm \non Non-uniform Grid Maps"
       supervisor: "Prof. Thet Naing Oo"
@@ -40,7 +45,7 @@ sections:
     - name: "Research and Work Experience"
       entity:
         - organization: "Dyson, Singapore"
-          dates: "August 2024 - Present"
+          dates: "August 2024 - January 2025"
           position: "Senior Software Engineer, Robotics"
         - organization: "LionsBot International Pte Ltd, Singapore"
           dates: "February 2022 - July 2024"
