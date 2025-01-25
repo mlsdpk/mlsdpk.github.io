@@ -35,20 +35,20 @@ jobs:
           # If using the 'assets' git submodule from Chirpy Starter, uncomment above
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
-      - name: CV Generation - clone cv-tools Repository
-        run: |
-          git clone https://github.com/mlsdpk/cv-tools.git
+      # - name: CV Generation - clone cv-tools Repository
+      #   run: |
+      #     git clone https://github.com/mlsdpk/cv-tools.git
 
-      - name: CV Generation - set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      # - name: CV Generation - set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v2
 
-      - name: CV Generation - build and Run Docker Container
-        run: |
-          docker build -t cv-tools cv-tools/
-          docker run --rm -v $(pwd):/workdir cv-tools ./cv-tools/run.sh -c assets/docs/cv/config.yaml -b assets/docs/cv/bibtex.bib
+      # - name: CV Generation - build and Run Docker Container
+      #   run: |
+      #     docker build -t cv-tools cv-tools/
+      #     docker run --rm -v $(pwd):/workdir cv-tools ./cv-tools/run.sh -c assets/docs/cv/config.yaml -b assets/docs/cv/bibtex.bib
 
-      - name: CV Generation - copy to assets folder
-        run: cp cv-tools/output/output.pdf assets/docs/cv/cv.pdf
+      # - name: CV Generation - copy to assets folder
+      #   run: cp cv-tools/output/output.pdf assets/docs/cv/cv.pdf
 
       - name: Setup Pages
         id: pages
@@ -57,7 +57,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: 3.3
           bundler-cache: true
 
       - name: Setup Node
