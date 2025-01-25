@@ -9,10 +9,10 @@ math: true
 media_subpath: /assets/img/posts/robotics/
 ---
 <div style="display: flex; margin-bottom: 20px;">
-    <img src="empty_map.gif" style="flex: 1; padding-right: 5px;">
-    <img src="map_with_single_cube.gif" style="flex: 1; padding-right: 5px;">
-    <img src="map_with_many_homotopy_classes.gif" style="flex: 1; padding-right: 5px;">
-    <img src="map_with_single_narrow_passage_gap.gif" style="flex: 1;">
+    <img src="empty_map.gif" alt="" style="flex: 1; padding-right: 5px;">
+    <img src="map_with_single_cube.gif" alt="" style="flex: 1; padding-right: 5px;">
+    <img src="map_with_many_homotopy_classes.gif" alt="" style="flex: 1; padding-right: 5px;">
+    <img src="map_with_single_narrow_passage_gap.gif" alt="" style="flex: 1;">
 </div>
 
 The primary motivation for developing the RRT algorithm is to address kinodynamic systems in high-dimensional state spaces. These systems usually aim to generate open-loop trajectories that satisfy global obstacle constraints and local differential constraints, which are valuable in a wide variety of robotic applications. I won't dive into too many details on the literature here, but if you are interested, I highly encourage you to read the original RRT papers [1][2]. There, you can find an extensive literature review and a solid background on how the authors' ideas are built on a large foundation of related research.
