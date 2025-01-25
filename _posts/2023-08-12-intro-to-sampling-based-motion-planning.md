@@ -6,7 +6,7 @@ tags: [path planning, algorithms]
 comments: true
 published: true
 math: true
-img_path: /assets/img/posts/robotics/
+media_subpath: /assets/img/posts/robotics/
 ---
 <div style="display: flex; margin-bottom: 20px;">
     <img src="empty_map.gif" style="flex: 1; padding-right: 5px;">

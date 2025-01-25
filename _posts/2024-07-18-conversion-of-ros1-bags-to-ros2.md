@@ -5,7 +5,7 @@ categories: [Robotics]
 tags: [ros2]
 comments: true
 published: true
-img_path: /assets/img/posts/robotics/
+media_subpath: /assets/img/posts/robotics/
 ---
 ![](mcap_ros2.jpeg){: w="800" h="500" }
 

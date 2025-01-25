@@ -1,6 +1,6 @@
 ---
 layout: page
-icon: fas fa-archive
+icon: fas fa-user
 order: 1
 ---
 I’m a Senior Software Engineer at <a href="https://careers.dyson.com/en-gb/what-you-can-do/engineer/robotics/">Dyson</a>, where I work in the Upstream Robotics team. My main responsibility is to help design and maintain the entire high-level software stack and scalable distributed system architectures for Dyson’s next-generation robots. I focus on maintaining software quality and fostering a collaborative engineering culture across the team.

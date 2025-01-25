@@ -6,7 +6,7 @@ tags: [c++, math]
 comments: true
 math: true
 published: true
-img_path: /assets/img/posts/statistics/
+media_subpath: /assets/img/posts/statistics/
 ---
 # Prerequisites
 

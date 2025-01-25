@@ -5,7 +5,7 @@ categories: [Programming]
 tags: [c++]
 comments: true
 published: true
-img_path: /assets/img/posts/c++/
+media_subpath: /assets/img/posts/c++/
 ---
 
 Writing high-performance programs requires developers to understand a concept called *locality*, which enables programs to access data items that are in close proximity to recently accessed items. This notion, also widely known as **the principle of locality**, has a significant impact on designing performance-critical applications. In this article, I would like to briefly describe the fundamental idea of locality and provide some examples demonstrating how to write and evaluate locality-aware programs in C++.
