@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           # submodules: true
@@ -57,17 +57,25 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2.2" # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Build Assets
+        run: npm i && npm run build
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
 
-      - name: Test site
-        run: |
-          bundle exec htmlproofer _site --disable-external --allow_hash_href
+      - name: Test Site
+        run: bash tools/test.sh
+          
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
         with:
