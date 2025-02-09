@@ -42,28 +42,6 @@ sections:
 
   - type: experience
     content:
-    - name: "Research and Work Experience"
-      entity:
-        - organization: "Dyson, Singapore"
-          dates: "August 2024 - January 2025"
-          position: "Senior Software Engineer, Robotics"
-        - organization: "LionsBot International Pte Ltd, Singapore"
-          dates: "February 2022 - July 2024"
-          position: "Software Engineer, Autonomy"
-          responsibilities:
-            - "Led the development and strategic planning of key modules and infrastructure for the perception stack"
-            - "Provided leadership in reviewing, guiding, and training the team to improve overall code quality and performance"
-            - "Led the initiative to set up internal automated testing and tooling infrastructure to optimize development processes"
-            - "Contributed to the development of multiple patent-pending technologies"
-        - organization: "ROAR Lab"
-          dates: "October 2019 - December 2020"
-          position: "Research Intern"
-          supervisor: "Prof. Mohan Rajesh Elara"
-          responsibilities:
-            - "Published research articles on robotics, path planning, and computer vision"
-            - "Developed autonomy systems for various indoor and outdoor reconfigurable robots, including stair-
-climbing and wall-climbing robots"
-
     - name: "Teaching and Volunteering"
       entity:
         - organization: "Computer Vision and Machine Learning Lab"
@@ -94,37 +72,29 @@ climbing and wall-climbing robots"
   
   - type: experience
     content:
-    - name: "Nanodegrees"
+    - name: "Honors, Awards and Scholarships"
       entity:
-        - organization: "Udacity C++ Nanodegree Program"
-          dates: "Graduated February 2021"
-          position: "Curriculum: OOP, Memory Management, Concurrency"
-        - organization: "Udacity Sensor Fusion Nanodegree Program"
-          dates: "Graduated March 2020"
-          position: "Curriculum: Lidar, Radar, Camera, Kalman Filters"
-
-  - type: skills
-    content:
-    - name: "Spoken Languages"
-      data: "English (Fluent), Burmese (Native)"
-    - name: "Programming Languages"
-      data: "C++, Python, Matlab, Javascript"
-    - name: "Tools and Technologies"
-      data: "ROS/ROS2, DDS, Qt, CMake, LATEX, Bash/Shell, Linux, Git, Jira, Confluence"
-
-  - type: bullets
-    title: "Honors and Awards"
-    description: ""
-    content:
-      - item: "Honorable Mention by Aung San Suu Kyi, the State Counselor of the Republic of the Union of Myanmar, 
-      during the 43rd Singapore Lecture, 2018, recognized for achieving 6th place,
-       the top among ASEAN countries in the World Robotics Competition"
-      - item: "Certificate of Honor Award, Ministry of Education Myanmar, 
-      recognition for achieving world rank 6th in the First Global Robotics Competition, 2017"
-      - item: "Certificate of Excellence Award, International FIRST Committee Association, 
-      recognized for outstand- ing representation of Team Myanmar and excellence in the Inaugural 2017 FIRST Global Challenge in Washington, DC"
-      - item: "Best Presenter Award, Autonomy Week 2022, LionsBot International Pte Ltd, Singapore"
-      - item: "Senior Championship Award, Myanmar STEM Competition, 2018-2019"
+        - organization: "Graduate Funding Package"
+          dates: "2025 - 2027"
+          position: "University of Toronto Institute for Aerospace Studies"
+          responsibilities:
+            - "\\$56,000 per academic year, \\$112,000 total"
+        - organization: "Best Presenter Award"
+          dates: "2022"
+          position: "LionsBot International Pte Ltd, Singapore"
+        - organization: "Senior Championship Award"
+          dates: "2018"
+          position: "Myanmar STEM Competition"
+        - organization: "Certificate of Honor Award"
+          dates: "2017"
+          position: "Ministry of Education, Myanmar"
+          responsibilities:
+            - "Recognition for achieving world rank 6th in the First Global Robotics Competition, 2017"
+        - organization: "Certificate of Excellence Award"
+          dates: "2017"
+          position: "International FIRST Committee Association"
+          responsibilities:
+            - "Recognition for outstanding representation of Team Myanmar and excellence in the Inaugural 2017 FIRST Global Challenge in Washington, DC"
 
   - type: bullets
     title: "Professional Activities"
@@ -137,8 +107,6 @@ climbing and wall-climbing robots"
       - item: "Conferences"
         subitems:
           - "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
-
-  - type: newpage
 
   - type: talks
     content:
@@ -157,5 +125,50 @@ climbing and wall-climbing robots"
     - name: "``Introduction to Python Programming'', Invited workshop, Barcamp TU Hinthada, Myanmar."
       month: "Jul."
       year: "2018"
+      
+  - type: experience
+    content:
+    - name: "Research and Work Experience"
+      entity:
+        - organization: "Dyson, Singapore"
+          dates: "August 2024 - January 2025"
+          position: "Senior Software Engineer, Robotics"
+          responsibilities:
+            - "Designed and maintained the high-level software stack and scalable distributed system architectures"
+            - "Drove a culture of software quality and promoted a collaborative engineering culture across the team"
+        - organization: "LionsBot International Pte Ltd, Singapore"
+          dates: "February 2022 - July 2024"
+          position: "Software Engineer, Autonomy"
+          responsibilities:
+            - "Led the development and strategic planning of key modules and infrastructure for the perception stack"
+            - "Provided leadership in reviewing, guiding, and training the team to improve overall code quality and performance"
+            - "Led the initiative to set up internal automated testing and tooling infrastructure to optimize development processes"
+            - "Contributed to the development of multiple patent-pending technologies"
+        - organization: "ROAR Lab"
+          dates: "October 2019 - December 2020"
+          position: "Research Intern"
+          supervisor: "Prof. Mohan Rajesh Elara"
+          responsibilities:
+            - "Published research articles on robotics, path planning, and computer vision"
+            - "Developed autonomy systems for various indoor and outdoor reconfigurable robots, including stair-
+climbing and wall-climbing robots"
+
+    - name: "Nanodegrees"
+      entity:
+        - organization: "Udacity C++ Nanodegree Program"
+          dates: "Graduated February 2021"
+          position: "Curriculum: OOP, Memory Management, Concurrency"
+        - organization: "Udacity Sensor Fusion Nanodegree Program"
+          dates: "Graduated March 2020"
+          position: "Curriculum: Lidar, Radar, Camera, Kalman Filters"
+
+  - type: skills
+    content:
+    - name: "Spoken Languages"
+      data: "English (Fluent), Burmese (Native)"
+    - name: "Programming Languages"
+      data: "C++, Python, Matlab, Javascript"
+    - name: "Tools and Technologies"
+      data: "ROS/ROS2, DDS, Qt, CMake, LATEX, Bash/Shell, Linux, Git, Jira, Confluence"
 
   - type: publications
