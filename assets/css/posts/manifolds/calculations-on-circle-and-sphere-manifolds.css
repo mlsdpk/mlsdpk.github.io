@@ -1,0 +1,12 @@
+#circle-vis {
+  width: 420px;
+  height: 420px;
+  margin: auto;
+  background-color: white;
+  /* border: 1px solid #ddd;
+  border-radius: 8px; */
+  position: relative;
+}
+#circle-vis canvas {
+  touch-action: none;
+} /* allow dragging on touch screens */
