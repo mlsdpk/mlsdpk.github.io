@@ -52,7 +52,7 @@ sections:
           location: "Yangon Technological University, Myanmar"
           responsibilities:
             - "Instructor of [McE-51069](https://ytu-cvlab.github.io/mce-51069/) (AI \\& Computer Vision) online course"
-            - "Designed and delivered a comprehensive course curriculum focused on reinforcement learning"  
+            - "Designed and delivered a comprehensive course curriculum focused on reinforcement learning"
         - organization: "Cluster of Science and Technology"
           dates: "July 2017 - June 2018"
           position: "President"
@@ -69,7 +69,7 @@ sections:
           location: ""
           responsibilities:
             - "Designed and developed online courses on Robot Operating System (ROS) and Python programming language, empowering Myanmar students to stay updated with the latest trends in robotics"
-  
+
   - type: experience
     content:
     - name: "Honors, Awards and Scholarships"
@@ -109,6 +109,7 @@ sections:
           - "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
 
   - type: talks
+    title: "Invited Talks/Workshops"
     content:
     - name: "``Robotics TechTalk'', Invited talk, American Center Yangon, Myanmar."
       month: "Mar."
@@ -125,7 +126,7 @@ sections:
     - name: "``Introduction to Python Programming'', Invited workshop, Barcamp TU Hinthada, Myanmar."
       month: "Jul."
       year: "2018"
-      
+
   - type: experience
     content:
     - name: "Research and Work Experience"
