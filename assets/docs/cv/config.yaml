@@ -70,6 +70,34 @@ sections:
             responsibilities:
               - "Designed and developed online courses on Robot Operating System (ROS) and Python programming language, empowering Myanmar students to stay updated with the latest trends in robotics"
 
+      - name: "Research and Work Experience"
+        entity:
+          - organization: "STARS Laboratory"
+            dates: "January 2025 - Present"
+            position: "Graduate Research Student"
+            supervisor: "Prof. Jonathan Kelly"
+          - organization: "Dyson, Singapore"
+            dates: "August 2024 - January 2025"
+            position: "Senior Software Engineer, Robotics"
+            responsibilities:
+              - "Designed and maintained the high-level software stack and scalable distributed system architectures"
+              - "Drove a culture of software quality and promoted a collaborative engineering culture across the team"
+          - organization: "LionsBot International Pte Ltd, Singapore"
+            dates: "February 2022 - July 2024"
+            position: "Software Engineer, Autonomy"
+            responsibilities:
+              - "Led the development and strategic planning of key modules and infrastructure for the perception stack"
+              - "Provided leadership in reviewing, guiding, and training the team to improve overall code quality and performance"
+              - "Led the initiative to set up internal automated testing and tooling infrastructure to optimize development processes"
+              - "Contributed to the development of multiple patent-pending technologies"
+          - organization: "ROAR Lab"
+            dates: "October 2019 - December 2020"
+            position: "Research Intern"
+            supervisor: "Prof. Mohan Rajesh Elara"
+            responsibilities:
+              - "Published research articles on robotics, path planning, and computer vision"
+              - "Developed autonomy systems for various indoor and outdoor reconfigurable robots, including stair-climbing and wall-climbing robots"
+
   - type: experience
     content:
       - name: "Honors, Awards and Scholarships"
@@ -108,6 +136,8 @@ sections:
         subitems:
           - "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
 
+  - type: newpage
+
   - type: talks
     title: "Invited Talks/Workshops"
     content:
@@ -129,30 +159,6 @@ sections:
 
   - type: experience
     content:
-      - name: "Research and Work Experience"
-        entity:
-          - organization: "Dyson, Singapore"
-            dates: "August 2024 - January 2025"
-            position: "Senior Software Engineer, Robotics"
-            responsibilities:
-              - "Designed and maintained the high-level software stack and scalable distributed system architectures"
-              - "Drove a culture of software quality and promoted a collaborative engineering culture across the team"
-          - organization: "LionsBot International Pte Ltd, Singapore"
-            dates: "February 2022 - July 2024"
-            position: "Software Engineer, Autonomy"
-            responsibilities:
-              - "Led the development and strategic planning of key modules and infrastructure for the perception stack"
-              - "Provided leadership in reviewing, guiding, and training the team to improve overall code quality and performance"
-              - "Led the initiative to set up internal automated testing and tooling infrastructure to optimize development processes"
-              - "Contributed to the development of multiple patent-pending technologies"
-          - organization: "ROAR Lab"
-            dates: "October 2019 - December 2020"
-            position: "Research Intern"
-            supervisor: "Prof. Mohan Rajesh Elara"
-            responsibilities:
-              - "Published research articles on robotics, path planning, and computer vision"
-              - "Developed autonomy systems for various indoor and outdoor reconfigurable robots, including stair-climbing and wall-climbing robots"
-
       - name: "Nanodegrees"
         entity:
           - organization: "Udacity C++ Nanodegree Program"
