@@ -45,7 +45,7 @@ jobs:
       - name: CV Generation - build and Run Docker Container
         run: |
           docker build -t cv-tools cv-tools/
-          docker run --rm -v $(pwd):/workdir cv-tools ./cv-tools/run.sh -c assets/docs/cv/config.yaml -b assets/docs/cv/bibtex.bib
+          docker run --rm -v $(pwd):/workdir cv-tools ./cv-tools/run.sh -c assets/docs/cv/config.yaml
 
       - name: CV Generation - copy to assets folder
         run: cp cv-tools/output/output.pdf assets/docs/cv/cv.pdf

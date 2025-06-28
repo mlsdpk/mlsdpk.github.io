@@ -22,79 +22,79 @@ subheading:
 sections:
   - type: education
     content:
-    - university: "University of Toronto"
-      location: "Toronto, Ontario"
-      dates: "January 2025 - Present"
-      degree: "Master of Applied Science (MASc) in Aerospace Science and Engineering"
-      supervisor: "Prof. Jonathan Kelly"
-    - university: "University of Portsmouth"
-      location: "Portsmouth, United Kingdom"
-      dates: "May 2022 - May 2023"
-      degree: "Bachelor of Engineering (BEng) with Honours in Electronic Engineering"
-      honors: "First Class Honours"
-      thesis_title: "A Novel Any-angle Path Planning Algorithm \non Non-uniform Grid Maps"
-      supervisor: "Prof. Thet Naing Oo"
-    - university: "Yangon Technological University"
-      location: "Yangon, Myanmar"
-      dates: "December 2015 - December 2021"
-      degree: "Mechatronics Engineering"
-      supervisor: "Prof. Theint Theint Thu"
+      - university: "University of Toronto"
+        location: "Toronto, Ontario"
+        dates: "January 2025 - Present"
+        degree: "Master of Applied Science (MASc) in Aerospace Science and Engineering"
+        supervisor: "Prof. Jonathan Kelly"
+      - university: "University of Portsmouth"
+        location: "Portsmouth, United Kingdom"
+        dates: "May 2022 - May 2023"
+        degree: "Bachelor of Engineering (BEng) with Honours in Electronic Engineering"
+        honors: "First Class Honours"
+        thesis_title: "A Novel Any-angle Path Planning Algorithm \non Non-uniform Grid Maps"
+        supervisor: "Prof. Thet Naing Oo"
+      - university: "Yangon Technological University"
+        location: "Yangon, Myanmar"
+        dates: "December 2015 - December 2021"
+        degree: "Mechatronics Engineering"
+        supervisor: "Prof. Theint Theint Thu"
 
   - type: experience
     content:
-    - name: "Teaching and Volunteering"
-      entity:
-        - organization: "Computer Vision and Machine Learning Lab"
-          dates: "January 2021 - December 2021"
-          position: "Teaching Assistant"
-          supervisor: "Prof. Theint Theint Thu"
-          department: "Department of Mechatronic Engineering"
-          location: "Yangon Technological University, Myanmar"
-          responsibilities:
-            - "Instructor of [McE-51069](https://ytu-cvlab.github.io/mce-51069/) (AI \\& Computer Vision) online course"
-            - "Designed and delivered a comprehensive course curriculum focused on reinforcement learning"
-        - organization: "Cluster of Science and Technology"
-          dates: "July 2017 - June 2018"
-          position: "President"
-          department: ""
-          location: "Yangon Technological University, Myanmar"
-          responsibilities:
-            - "Served as President of the student club 'Cluster of Science and Technology (CST)'"
-            - "Led the team for one year, overseeing activities aimed at keeping students updated on the latest developments in science and technology"
-            - "Contributed to the promotion of science and technology awareness within the university community, enhancing engagement and knowledge sharing"
-        - organization: "Lae Lar Technology Co., Ltd"
-          dates: "March 2018 - March 2020"
-          position: "Instructor"
-          department: ""
-          location: ""
-          responsibilities:
-            - "Designed and developed online courses on Robot Operating System (ROS) and Python programming language, empowering Myanmar students to stay updated with the latest trends in robotics"
+      - name: "Teaching and Volunteering"
+        entity:
+          - organization: "Computer Vision and Machine Learning Lab"
+            dates: "January 2021 - December 2021"
+            position: "Teaching Assistant"
+            supervisor: "Prof. Theint Theint Thu"
+            department: "Department of Mechatronic Engineering"
+            location: "Yangon Technological University, Myanmar"
+            responsibilities:
+              - "Instructor of [McE-51069](https://ytu-cvlab.github.io/mce-51069/) (AI \\& Computer Vision) online course"
+              - "Designed and delivered a comprehensive course curriculum focused on reinforcement learning"
+          - organization: "Cluster of Science and Technology"
+            dates: "July 2017 - June 2018"
+            position: "President"
+            department: ""
+            location: "Yangon Technological University, Myanmar"
+            responsibilities:
+              - "Served as President of the student club 'Cluster of Science and Technology (CST)'"
+              - "Led the team for one year, overseeing activities aimed at keeping students updated on the latest developments in science and technology"
+              - "Contributed to the promotion of science and technology awareness within the university community, enhancing engagement and knowledge sharing"
+          - organization: "Lae Lar Technology Co., Ltd"
+            dates: "March 2018 - March 2020"
+            position: "Instructor"
+            department: ""
+            location: ""
+            responsibilities:
+              - "Designed and developed online courses on Robot Operating System (ROS) and Python programming language, empowering Myanmar students to stay updated with the latest trends in robotics"
 
   - type: experience
     content:
-    - name: "Honors, Awards and Scholarships"
-      entity:
-        - organization: "Graduate Funding Package"
-          dates: "2025 - 2027"
-          position: "University of Toronto Institute for Aerospace Studies"
-          responsibilities:
-            - "\\$56,000 per academic year, \\$112,000 total"
-        - organization: "Best Presenter Award"
-          dates: "2022"
-          position: "LionsBot International Pte Ltd, Singapore"
-        - organization: "Senior Championship Award"
-          dates: "2018"
-          position: "Myanmar STEM Competition"
-        - organization: "Certificate of Honor Award"
-          dates: "2017"
-          position: "Ministry of Education, Myanmar"
-          responsibilities:
-            - "Recognition for achieving world rank 6th in the First Global Robotics Competition, 2017"
-        - organization: "Certificate of Excellence Award"
-          dates: "2017"
-          position: "International FIRST Committee Association"
-          responsibilities:
-            - "Recognition for outstanding representation of Team Myanmar and excellence in the Inaugural 2017 FIRST Global Challenge in Washington, DC"
+      - name: "Honors, Awards and Scholarships"
+        entity:
+          - organization: "Graduate Funding Package"
+            dates: "2025 - 2027"
+            position: "University of Toronto Institute for Aerospace Studies"
+            responsibilities:
+              - "\\$56,000 per academic year, \\$112,000 total"
+          - organization: "Best Presenter Award"
+            dates: "2022"
+            position: "LionsBot International Pte Ltd, Singapore"
+          - organization: "Senior Championship Award"
+            dates: "2018"
+            position: "Myanmar STEM Competition"
+          - organization: "Certificate of Honor Award"
+            dates: "2017"
+            position: "Ministry of Education, Myanmar"
+            responsibilities:
+              - "Recognition for achieving world rank 6th in the First Global Robotics Competition, 2017"
+          - organization: "Certificate of Excellence Award"
+            dates: "2017"
+            position: "International FIRST Committee Association"
+            responsibilities:
+              - "Recognition for outstanding representation of Team Myanmar and excellence in the Inaugural 2017 FIRST Global Challenge in Washington, DC"
 
   - type: bullets
     title: "Professional Activities"
@@ -111,65 +111,70 @@ sections:
   - type: talks
     title: "Invited Talks/Workshops"
     content:
-    - name: "``Robotics TechTalk'', Invited talk, American Center Yangon, Myanmar."
-      month: "Mar."
-      year: "2024"
-    - name: "``Mobile Robot Kinematics'', Invited workshop, Laboratory of Robotics and AI (LORA), Yangon Technological University, Myanmar."
-      month: "Dec."
-      year: "2019"
-    - name: "``Engineering and Robotics'', Invited talk, Gakken Classroom Education Seminar, Myanmar."
-      month: "Jul."
-      year: "2019"
-    - name: "``Python Programming for beginners'', Invited workshop, MakerFest Myanmar."
-      month: "Feb."
-      year: "2019"
-    - name: "``Introduction to Python Programming'', Invited workshop, Barcamp TU Hinthada, Myanmar."
-      month: "Jul."
-      year: "2018"
+      - name: "'Robotics TechTalk', Invited talk, American Center Yangon, Myanmar."
+        month: "Mar."
+        year: "2024"
+      - name: "'Mobile Robot Kinematics', Invited workshop, Laboratory of Robotics and AI (LORA), Yangon Technological University, Myanmar."
+        month: "Dec."
+        year: "2019"
+      - name: "'Engineering and Robotics', Invited talk, Gakken Classroom Education Seminar, Myanmar."
+        month: "Jul."
+        year: "2019"
+      - name: "'Python Programming for beginners', Invited workshop, MakerFest Myanmar."
+        month: "Feb."
+        year: "2019"
+      - name: "'Introduction to Python Programming', Invited workshop, Barcamp TU Hinthada, Myanmar."
+        month: "Jul."
+        year: "2018"
 
   - type: experience
     content:
-    - name: "Research and Work Experience"
-      entity:
-        - organization: "Dyson, Singapore"
-          dates: "August 2024 - January 2025"
-          position: "Senior Software Engineer, Robotics"
-          responsibilities:
-            - "Designed and maintained the high-level software stack and scalable distributed system architectures"
-            - "Drove a culture of software quality and promoted a collaborative engineering culture across the team"
-        - organization: "LionsBot International Pte Ltd, Singapore"
-          dates: "February 2022 - July 2024"
-          position: "Software Engineer, Autonomy"
-          responsibilities:
-            - "Led the development and strategic planning of key modules and infrastructure for the perception stack"
-            - "Provided leadership in reviewing, guiding, and training the team to improve overall code quality and performance"
-            - "Led the initiative to set up internal automated testing and tooling infrastructure to optimize development processes"
-            - "Contributed to the development of multiple patent-pending technologies"
-        - organization: "ROAR Lab"
-          dates: "October 2019 - December 2020"
-          position: "Research Intern"
-          supervisor: "Prof. Mohan Rajesh Elara"
-          responsibilities:
-            - "Published research articles on robotics, path planning, and computer vision"
-            - "Developed autonomy systems for various indoor and outdoor reconfigurable robots, including stair-
-climbing and wall-climbing robots"
+      - name: "Research and Work Experience"
+        entity:
+          - organization: "Dyson, Singapore"
+            dates: "August 2024 - January 2025"
+            position: "Senior Software Engineer, Robotics"
+            responsibilities:
+              - "Designed and maintained the high-level software stack and scalable distributed system architectures"
+              - "Drove a culture of software quality and promoted a collaborative engineering culture across the team"
+          - organization: "LionsBot International Pte Ltd, Singapore"
+            dates: "February 2022 - July 2024"
+            position: "Software Engineer, Autonomy"
+            responsibilities:
+              - "Led the development and strategic planning of key modules and infrastructure for the perception stack"
+              - "Provided leadership in reviewing, guiding, and training the team to improve overall code quality and performance"
+              - "Led the initiative to set up internal automated testing and tooling infrastructure to optimize development processes"
+              - "Contributed to the development of multiple patent-pending technologies"
+          - organization: "ROAR Lab"
+            dates: "October 2019 - December 2020"
+            position: "Research Intern"
+            supervisor: "Prof. Mohan Rajesh Elara"
+            responsibilities:
+              - "Published research articles on robotics, path planning, and computer vision"
+              - "Developed autonomy systems for various indoor and outdoor reconfigurable robots, including stair-climbing and wall-climbing robots"
 
-    - name: "Nanodegrees"
-      entity:
-        - organization: "Udacity C++ Nanodegree Program"
-          dates: "Graduated February 2021"
-          position: "Curriculum: OOP, Memory Management, Concurrency"
-        - organization: "Udacity Sensor Fusion Nanodegree Program"
-          dates: "Graduated March 2020"
-          position: "Curriculum: Lidar, Radar, Camera, Kalman Filters"
+      - name: "Nanodegrees"
+        entity:
+          - organization: "Udacity C++ Nanodegree Program"
+            dates: "Graduated February 2021"
+            position: "Curriculum: OOP, Memory Management, Concurrency"
+          - organization: "Udacity Sensor Fusion Nanodegree Program"
+            dates: "Graduated March 2020"
+            position: "Curriculum: Lidar, Radar, Camera, Kalman Filters"
 
   - type: skills
     content:
-    - name: "Spoken Languages"
-      data: "English (Fluent), Burmese (Native)"
-    - name: "Programming Languages"
-      data: "C++, Python, Matlab, Javascript"
-    - name: "Tools and Technologies"
-      data: "ROS/ROS2, DDS, Qt, CMake, LATEX, Bash/Shell, Linux, Git, Jira, Confluence"
+      - name: "Spoken Languages"
+        data: "English (Fluent), Burmese (Native)"
+      - name: "Programming Languages"
+        data: "C++, Python, Matlab, Javascript"
+      - name: "Tools and Technologies"
+        data: "ROS/ROS2, DDS, Qt, CMake, LATEX, Bash/Shell, Linux, Git, Jira, Confluence"
 
   - type: publications
+    title: "Publications"
+    bibfile: publications.bib
+
+  - type: publications
+    title: "Patents"
+    bibfile: patents.bib
