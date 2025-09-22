@@ -1,0 +1,20 @@
+{%- assign items = site.data.news | sort: "date" | reverse -%}
+{%- if include.limit -%}
+  {%- assign items = items | slice: 0, include.limit -%}
+{%- endif -%}
+
+<ul class="list-unstyled m-0">
+  {%- for n in items -%}
+    <li class="py-1 d-flex align-items-baseline gap-3">
+      <small class="text-muted flex-shrink-0 text-nowrap" style="min-width: 5rem;">
+        {{ n.date | date: "%b %d, %Y" }}
+      </small>
+
+      <div class="flex-grow-1">
+        {{ n.text | markdownify | strip | replace: '<p>', '' | replace: '</p>', '' }}
+      </div>
+    </li>
+    <p></p>
+  {%- endfor -%}
+</ul>
+

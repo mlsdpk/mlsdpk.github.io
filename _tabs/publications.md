@@ -1,5 +1,5 @@
 ---
 layout: publications
 icon: fas fa-book
-order: 2
+order: 3
 ---
