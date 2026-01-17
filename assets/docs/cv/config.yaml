@@ -23,10 +23,16 @@ sections:
   - type: education
     content:
       - university: "University of Toronto"
-        location: "Toronto, Ontario"
-        dates: "January 2025 - Present"
-        degree: "Master of Applied Science (MASc) in Aerospace Science and Engineering"
+        location: "Toronto, Ontario, Canada"
+        dates: "January 2026 - Present"
+        degree: "Doctor of Philosophy (PhD) in Aerospace Science and Engineering"
         supervisor: "Prof. Jonathan Kelly"
+      - university: "University of Toronto"
+        location: "Toronto, Ontario, Canada"
+        dates: "January 2025 - January 2026"
+        degree: "Master of Applied Science (MASc) in Aerospace Science and Engineering"
+        bullets:
+          - "Transferred to PhD program prior to Master's completion"
       - university: "University of Portsmouth"
         location: "Portsmouth, United Kingdom"
         dates: "May 2022 - May 2023"
