@@ -5,7 +5,7 @@ permalink: /
 toc: false
 ---
 
-I am currently pursuing my Master’s in Robotics at the [University of Toronto Robotics Institute](https://robotics.utoronto.ca/), working with [Professor Jonathan Kelly](https://discover.research.utoronto.ca/20331-jonathan-kelly) in the [STARS Laboratory](https://starslab.ca). My research explores ideas from differential geometry to advance motion planning and task-level behaviors, making robots move and act more intelligently and efficiently.
+I am currently pursuing my PhD in Robotics at the [University of Toronto Robotics Institute](https://robotics.utoronto.ca/), working with [Professor Jonathan Kelly](https://discover.research.utoronto.ca/20331-jonathan-kelly) in the [STARS Laboratory](https://starslab.ca). My research explores ideas from differential geometry to advance motion planning and task-level behaviors, making robots move and act more intelligently and efficiently.
 
 ![Desktop View](/assets/img/about/phone-cover.jpg){: .w-50 .right}
 
