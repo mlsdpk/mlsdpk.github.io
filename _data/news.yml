@@ -1,8 +1,12 @@
+- date: 2026-04-01
+  text: >
+    Our paper on planning on Riemannian manifolds has been accepted to [WAFR 2026](https://algorithmic-robotics.org/)! 🎉
+
 - date: 2026-02-01
   text: >
     Our latest research on planning on Riemannian manifolds is now available on arXiv:<br/>
     [paper](https://arxiv.org/abs/2602.00992) \|
-    code - coming soon
+    [code](https://geodex.readthedocs.io/en/latest/)
 
 - date: 2026-01-25
   text: >
