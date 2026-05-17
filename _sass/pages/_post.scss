@@ -492,7 +492,63 @@ header {
 h2,
 h3,
 h4 {
-  @include bp.xl {
-    scroll-margin-top: 2rem;
+  scroll-margin-top: 5rem;
+}
+
+/* --- Editorial overrides --- */
+
+/* The legacy TOC bar/trigger don't fit the editorial top-nav layout. */
+#toc-bar,
+#toc-solo-trigger {
+  display: none !important;
+}
+
+/* Blockquotes pick up an accent left-rule that ties to the new palette. */
+blockquote:not([class^='prompt-']) {
+  border-left: 3px solid var(--link-color);
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  font-style: italic;
+  color: var(--blockquote-text-color);
+  margin: 1.5rem 0;
+}
+
+/* Tighten code-block visual weight. */
+div.highlight {
+  background-color: var(--highlight-bg-color);
+  border: 1px solid var(--language-border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+div.highlight .code-header {
+  background-color: var(--highlight-bg-color);
+  border-bottom: 1px solid var(--language-border-color);
+}
+
+/* Inline code: soften the background a hair. */
+code.highlighter-rouge {
+  background-color: var(--inline-code-bg);
+  padding: 0.12em 0.36em;
+  border-radius: 4px;
+  font-size: 0.88em;
+  color: var(--code-color);
+}
+
+/* Figure captions (rendered as <em> following inline images). */
+figure {
+  margin: 1.75rem 0;
+
+  figcaption {
+    font-size: 0.85rem;
+    color: var(--text-muted-color);
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
   }
+}
+
+/* Post header polish */
+header h1[data-toc-skip] {
+  margin-bottom: 1rem;
 }

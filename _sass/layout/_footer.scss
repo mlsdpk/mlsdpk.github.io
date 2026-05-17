@@ -1,36 +1,122 @@
 @use '../abstracts/breakpoints' as bp;
-@use '../abstracts/variables' as v;
-@use '../abstracts/mixins' as mx;
-@use '../abstracts/placeholders';
+@use '../abstracts/tokens' as t;
 
-footer {
-  background-color: var(--main-bg);
-  height: v.$footer-height;
+#site-footer {
+  margin-top: t.$space-9;
   border-top: 1px solid var(--main-border-color);
+  background-color: var(--main-bg);
+  font-size: 0.82rem;
+  color: var(--text-muted-color);
+}
 
-  @extend %text-xs;
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: t.$wide-max;
+  margin: 0 auto;
+  padding: t.$space-6 t.$content-padding-x t.$space-7;
 
-  @include bp.lt(bp.get(lg)) {
-    @include mx.slide;
+  @include bp.md {
+    flex-direction: row;
+    align-items: center;
+  }
+}
 
-    height: v.$footer-height-large;
-    padding: 1.5rem 0;
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1;
+  line-height: t.$leading-snug;
+
+  p {
+    margin: 0;
   }
 
   a {
-    @extend %text-highlight;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--link-underline-color);
+    transition: color t.$dur-fast t.$ease-out, border-color t.$dur-fast t.$ease-out;
 
     &:hover {
-      @extend %link-hover;
+      color: var(--link-color);
+      border-bottom-color: currentColor;
     }
   }
+}
 
-  em {
-    @extend %text-highlight;
+.footer-copy {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.footer-attribution {
+  font-size: 0.78rem;
+  color: var(--text-muted-color);
+}
+
+.footer-chrome {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+}
+
+.footer-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: t.$radius-pill;
+  color: var(--text-muted-color);
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color t.$dur-fast t.$ease-out,
+    background-color t.$dur-fast t.$ease-out,
+    border-color t.$dur-fast t.$ease-out;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--link-color);
+    background-color: var(--card-hovor-bg);
+    border-color: var(--main-border-color);
   }
 
-  p {
-    text-align: center;
-    margin-bottom: 0;
+  &:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+  }
+}
+
+/* Hide back-to-top by default (Chirpy JS shows it on scroll). */
+#back-to-top {
+  position: fixed;
+  right: t.$space-5;
+  bottom: t.$space-5;
+  z-index: 1010;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  color: var(--btn-backtotop-color);
+  background-color: var(--button-bg);
+  border-radius: t.$radius-pill;
+  display: none;
+
+  &:hover {
+    color: var(--link-color);
+  }
+
+  &.show {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }

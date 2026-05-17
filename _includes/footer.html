@@ -1,49 +1,62 @@
-<!-- The Footer -->
+<!-- Site footer -->
 
-<footer
-  aria-label="Site Info"
-  class="
-    d-flex flex-column justify-content-center text-muted
-    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
-  "
->
-  <p>
-    {{- '©' }}
-    <time>{{ 'now' | date: '%Y' }}</time>
+<footer id="site-footer" aria-label="Site Info">
+  <div class="footer-inner">
+    <div class="footer-meta">
+      <p class="footer-copy">
+        © <time>{{ 'now' | date: '%Y' }}</time> {{ site.social.name }}.
+      </p>
+    </div>
 
-    {% if site.social.links %}
-      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-    {% else %}
-      <em class="fst-normal">{{ site.social.name }}</em>.
-    {% endif %}
+    <div class="footer-chrome">
+      {% unless site.theme_mode %}
+        <button
+          type="button"
+          id="mode-toggle"
+          class="footer-icon-btn mode-toggle"
+          aria-label="Switch color mode"
+          title="Switch color mode"
+        >
+          <i class="fas fa-adjust"></i>
+        </button>
+      {% endunless %}
 
-    {% if site.data.locales[include.lang].copyright.brief %}
-      <span
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="{{ site.data.locales[include.lang].copyright.verbose }}"
-      >
-        {{- site.data.locales[include.lang].copyright.brief -}}
-      </span>
-    {% endif %}
-  </p>
+      {% for entry in site.data.contact %}
+        {% case entry.type %}
+          {% when 'github', 'twitter' %}
+            {%- capture url -%}
+              https://{{ entry.type }}.com/{{ site[entry.type].username }}
+            {%- endcapture -%}
+          {% when 'email' %}
+            {% assign email = site.social.email | split: '@' %}
+            {%- capture url -%}
+              javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
+            {%- endcapture -%}
+          {% when 'rss' %}
+            {% assign url = '/feed.xml' | relative_url %}
+          {% else %}
+            {% assign url = entry.url %}
+        {% endcase %}
 
-  <p>
-    {%- capture _platform -%}
-      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-    {%- endcapture -%}
-
-    {%- capture _theme -%}
-      <a
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="v{{ theme.version }}"
-        href="https://github.com/cotes2020/jekyll-theme-chirpy"
-        target="_blank"
-        rel="noopener"
-      >Chirpy</a>
-    {%- endcapture -%}
-
-    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
-  </p>
+        {% if url %}
+          <a
+            href="{{ url }}"
+            class="footer-icon-btn"
+            aria-label="{{ entry.type }}"
+            title="{{ entry.type }}"
+            {% assign link_types = '' %}
+            {% unless entry.noblank %}
+              target="_blank"
+              {% assign link_types = 'noopener noreferrer' %}
+            {% endunless %}
+            {% unless link_types == empty %}
+              rel="{{ link_types }}"
+            {% endunless %}
+          >
+            <i class="{{ entry.icon }}"></i>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 </footer>

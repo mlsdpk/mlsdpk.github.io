@@ -1,0 +1,168 @@
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/tokens' as t;
+
+$topnav-height: 64px;
+$topnav-height-sm: 56px;
+
+#topnav {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  width: 100%;
+  background-color: var(--topbar-bg);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  transition: border-color t.$dur-base t.$ease-out;
+
+  /* Browsers that don't support backdrop-filter get a solid bg. */
+  @supports not (backdrop-filter: blur(1px)) {
+    background-color: var(--main-bg);
+  }
+}
+
+.topnav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-4;
+  height: $topnav-height-sm;
+  max-width: t.$wide-max;
+  margin: 0 auto;
+  padding: 0 t.$content-padding-x;
+
+  @include bp.lg {
+    height: $topnav-height;
+  }
+}
+
+.topnav-brand {
+  font-family: var(--bs-body-font-family);
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--heading-color);
+  white-space: nowrap;
+  transition: color t.$dur-fast t.$ease-out;
+
+  &:hover {
+    color: var(--link-color);
+  }
+}
+
+/* Mobile hamburger */
+.topnav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin-right: -6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  @include bp.lg {
+    display: none;
+  }
+
+  .topnav-toggle-bar {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background-color: var(--heading-color);
+    border-radius: 2px;
+    transition:
+      transform t.$dur-base t.$ease-out,
+      opacity t.$dur-fast t.$ease-out;
+  }
+
+  &.is-open {
+    .topnav-toggle-bar:first-child {
+      transform: translateY(3.25px) rotate(45deg);
+    }
+    .topnav-toggle-bar:last-child {
+      transform: translateY(-3.25px) rotate(-45deg);
+    }
+  }
+}
+
+.topnav-links {
+  /* Mobile: collapsible sheet */
+  display: none;
+  position: absolute;
+  top: $topnav-height-sm;
+  left: 0;
+  right: 0;
+  background-color: var(--main-bg);
+  border-bottom: 1px solid var(--main-border-color);
+  padding: t.$space-3 0 t.$space-4;
+  box-shadow: var(--card-shadow);
+
+  &.is-open {
+    display: block;
+  }
+
+  @include bp.lg {
+    display: block !important;
+    position: static;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+.topnav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  @include bp.lg {
+    flex-direction: row;
+    align-items: center;
+    gap: t.$space-6;
+  }
+}
+
+.topnav-item {
+  display: block;
+}
+
+.topnav-link {
+  display: block;
+  padding: t.$space-3 t.$content-padding-x;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color t.$dur-fast t.$ease-out;
+  border-bottom: 1px solid transparent;
+
+  @include bp.lg {
+    padding: 0 0 2px;
+    border-bottom-width: 1.5px;
+  }
+
+  &:hover {
+    color: var(--link-color);
+  }
+
+  &.is-active {
+    color: var(--heading-color);
+    font-weight: 600;
+
+    @include bp.lg {
+      border-bottom-color: var(--heading-color);
+    }
+  }
+}

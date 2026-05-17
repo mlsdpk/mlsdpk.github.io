@@ -3,29 +3,45 @@ layout: page
 icon: fas fa-pen
 order: 2
 permalink: /posts/
+wide: true
 ---
 
 {% include lang.html %}
 
 {% assign per_page = 10 %}
-{% assign page_num  = 1 %}
+{% assign page_num = 1 %}
 
 {% assign all_pinned = site.posts | where: 'pin', true %}
 {% assign all_normal = site.posts | where_exp: 'p', 'p.pin != true and p.hidden != true' %}
 
-{%- comment -%}
-Combine pinned first, then normal, then take the window for this page.
-This mimics your pinned-on-top look without needing `paginator`.
-{%- endcomment -%}
 {% assign combined = all_pinned | concat: all_normal %}
 {% assign visible_start = per_page | times: page_num | minus: per_page %}
 {% assign posts = combined | slice: visible_start, per_page %}
 
-<div id="post-list" class="flex-grow-1 px-xl-1">
+<ol class="post-list">
   {% for post in posts %}
-    <article class="card-wrapper card">
-      <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
-        {% assign card_body_col = '12' %}
+    <li class="post-list-item">
+      <a class="post-list-link{% if post.image %} has-thumb{% endif %}" href="{{ post.url | relative_url }}">
+        <time class="post-list-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+          {{ post.date | date: '%b %-d, %Y' }}
+        </time>
+
+        <div class="post-list-body">
+          {% if post.categories.size > 0 or post.pin %}
+            <div class="post-list-meta">
+              {% if post.categories.size > 0 %}
+                <span>
+                  {% for category in post.categories %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+                </span>
+              {% endif %}
+              {% if post.pin %}
+                <span class="post-list-pin"><i class="fas fa-thumbtack"></i> Pinned</span>
+              {% endif %}
+            </div>
+          {% endif %}
+          <h2 class="post-list-title">{{ post.title }}</h2>
+          <p class="post-list-desc">{% include post-description.html %}</p>
+        </div>
 
         {% if post.image %}
           {% assign src = post.image.path | default: post.image %}
@@ -33,46 +49,11 @@ This mimics your pinned-on-top look without needing `paginator`.
             {% assign src = post.media_subpath | append: '/' | append: src | replace: '//', '/' %}
           {% endunless %}
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
-          {% assign lqip = post.image.lqip %}
-          <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}"{% if lqip %} lqip="{{ lqip }}"{% endif %}>
+          <div class="post-list-thumb">
+            <img src="{{ src }}" alt="{{ alt }}" loading="lazy">
           </div>
-          {% assign card_body_col = '7' %}
         {% endif %}
-
-        <div class="col-md-{{ card_body_col }}">
-          <div class="card-body d-flex flex-column">
-            <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
-
-            <div class="card-text content mt-0 mb-3">
-              <p>{% include post-description.html %}</p>
-            </div>
-
-            <div class="post-meta flex-grow-1 d-flex align-items-end">
-              <div class="me-auto">
-                <i class="far fa-calendar fa-fw me-1"></i>
-                {% include datetime.html date=post.date lang=lang %}
-
-                {% if post.categories.size > 0 %}
-                  <i class="far fa-folder-open fa-fw me-1"></i>
-                  <span class="categories">
-                    {% for category in post.categories %}
-                      {{ category }}{% unless forloop.last %},{% endunless %}
-                    {% endfor %}
-                  </span>
-                {% endif %}
-              </div>
-
-              {% if post.pin %}
-                <div class="pin ms-1">
-                  <i class="fas fa-thumbtack fa-fw"></i>
-                  <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
       </a>
-    </article>
+    </li>
   {% endfor %}
-</div>
+</ol>

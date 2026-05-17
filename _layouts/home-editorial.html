@@ -1,0 +1,60 @@
+---
+layout: default
+refactor: true
+wide: true
+---
+
+{% include lang.html %}
+
+<article class="home">
+  <header class="home-hero" aria-labelledby="home-name">
+    {% if page.eyebrow %}
+      <p class="home-eyebrow">{{ page.eyebrow }}</p>
+    {% endif %}
+
+    <h1 id="home-name" class="home-name">{{ page.title }}</h1>
+
+    {% if page.tagline %}
+      <p class="home-tagline">
+        {{ page.tagline | markdownify | strip | replace: '<p>', '' | replace: '</p>', '' }}
+      </p>
+    {% endif %}
+
+    {% if page.actions %}
+      <p class="home-actions">
+        {% for action in page.actions %}
+          <a class="home-action" href="{{ action.url }}"{% if action.external %} target="_blank" rel="noopener"{% endif %}>
+            <span>{{ action.label }}</span>
+            {% if action.external %}
+              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            {% else %}
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </p>
+    {% endif %}
+  </header>
+
+  {% if content != blank %}
+    <div class="home-intro">
+      {% if page.photo %}
+        <figure class="home-portrait">
+          <img src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title }}" loading="eager">
+        </figure>
+      {% endif %}
+
+      {{ content }}
+    </div>
+  {% endif %}
+
+  <section class="home-news" aria-labelledby="home-news-title">
+    <header class="home-section-header">
+      <h2 id="home-news-title" class="home-section-title">News</h2>
+      <span class="home-section-meta">Recent updates &amp; appearances</span>
+    </header>
+
+    {%- assign news_limit = page.news_limit | default: 8 -%}
+    {% include news.html limit=news_limit lang=lang %}
+  </section>
+</article>

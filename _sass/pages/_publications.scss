@@ -1,0 +1,344 @@
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/tokens' as t;
+
+/* ---- Page header ---- */
+.pub-page {
+  margin-top: -0.5rem;
+}
+
+.pub-page-header {
+  padding-bottom: t.$space-7;
+  margin-bottom: t.$space-7;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.pub-eyebrow {
+  margin: 0 0 t.$space-2;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
+}
+
+.pub-page-title {
+  margin: 0 0 t.$space-4;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 1.5vw + 1.5rem, 2.5rem);
+  font-weight: 600;
+  letter-spacing: t.$tracking-display;
+  line-height: t.$leading-tight;
+  color: var(--heading-color);
+}
+
+.pub-page-intro {
+  font-size: 1.02rem;
+  line-height: t.$leading-body;
+  color: var(--text-color);
+
+  p {
+    margin: 0 0 t.$space-3;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--link-color);
+    border-bottom: 1px solid var(--link-underline-color);
+    text-decoration: none;
+    transition: border-color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      border-bottom-color: var(--link-color);
+    }
+  }
+}
+
+/* ---- Year jump nav ---- */
+.pub-year-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-2;
+  margin-top: t.$space-5;
+}
+
+.pub-year-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted-color);
+  background-color: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: t.$radius-pill;
+  text-decoration: none;
+  transition:
+    color t.$dur-fast t.$ease-out,
+    border-color t.$dur-fast t.$ease-out,
+    background-color t.$dur-fast t.$ease-out;
+
+  &:hover {
+    color: var(--heading-color);
+    border-color: var(--link-color);
+    background-color: var(--main-bg);
+  }
+}
+
+/* ---- Year section ---- */
+.pub-year-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: t.$space-3 t.$space-6;
+  margin-bottom: t.$space-8;
+  scroll-margin-top: 88px;
+
+  @include bp.md {
+    grid-template-columns: 96px 1fr;
+  }
+
+  @include bp.lg {
+    grid-template-columns: 112px 1fr;
+    gap: t.$space-3 t.$space-7;
+  }
+}
+
+.pub-year-rail {
+  position: relative;
+
+  @include bp.md {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /* Vertical thread that visually groups all items within a year. */
+    &::after {
+      content: '';
+      display: block;
+      width: 1px;
+      flex: 1;
+      min-height: 2rem;
+      background-color: var(--main-border-color);
+      margin-left: 0.45rem;
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+.pub-year-label {
+  display: inline-flex;
+  align-items: center;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-tight;
+  color: var(--heading-color);
+  padding: 0.15rem 0;
+
+  @include bp.md {
+    position: sticky;
+    top: 88px;
+    font-size: clamp(1.8rem, 1.4vw + 1.2rem, 2.4rem);
+    letter-spacing: -0.025em;
+    color: var(--heading-color);
+    line-height: 1;
+    background-color: var(--main-bg);
+    padding: 0.25rem 0 0.75rem;
+
+    /* Small leading dot to anchor the vertical thread. */
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--link-color);
+      margin-right: 0.5rem;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* ---- Publication list ---- */
+.pub-year-list {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-7;
+}
+
+.pub-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: t.$space-4;
+
+  @include bp.md {
+    grid-template-columns: 200px 1fr;
+    gap: t.$space-5;
+  }
+
+  @include bp.lg {
+    grid-template-columns: 220px 1fr;
+    gap: t.$space-6;
+  }
+}
+
+.pub-cover {
+  display: block;
+  border-radius: t.$radius-md;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  aspect-ratio: 4 / 3;
+  transition: border-color t.$dur-base t.$ease-out, transform t.$dur-base t.$ease-out;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform t.$dur-slow t.$ease-out;
+  }
+
+  &:hover {
+    border-color: var(--link-color);
+
+    img {
+      transform: scale(1.03);
+    }
+  }
+}
+
+/* `image_fit: contain` — show the whole cover (letterbox if needed).
+   `image_fit: cover` (default) — crop to fill the slot. */
+.pub-card--fit-contain .pub-cover img {
+  object-fit: contain;
+}
+
+.pub-card--fit-cover .pub-cover img {
+  object-fit: cover;
+}
+
+.pub-body {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-2;
+  min-width: 0;
+}
+
+.pub-type {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--link-color);
+  background-color: var(--prompt-info-bg);
+  border-radius: t.$radius-xs;
+}
+
+.pub-type--preprint {
+  color: var(--prompt-warning-icon-color);
+  background-color: var(--prompt-warning-bg);
+}
+
+.pub-type--workshop {
+  color: var(--prompt-tip-icon-color);
+  background-color: var(--prompt-tip-bg);
+}
+
+.pub-title {
+  margin: 0;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-tight;
+  line-height: t.$leading-snug;
+  color: var(--heading-color);
+}
+
+.pub-authors {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: t.$leading-snug;
+  color: var(--text-muted-color);
+
+  strong {
+    color: var(--text-color);
+    font-weight: 600;
+  }
+}
+
+.pub-venue {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted-color);
+
+  em {
+    color: var(--text-color);
+    font-style: italic;
+  }
+}
+
+.pub-award {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--prompt-warning-icon-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  i {
+    font-size: 0.85em;
+  }
+}
+
+.pub-links {
+  list-style: none;
+  margin: t.$space-1 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-2 t.$space-3;
+  font-size: 0.84rem;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+
+    &:not(:last-child)::after {
+      content: '·';
+      margin-left: t.$space-3;
+      color: var(--text-muted-color);
+    }
+  }
+
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      border-bottom-color: var(--link-color);
+    }
+  }
+}

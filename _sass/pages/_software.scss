@@ -1,0 +1,345 @@
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/tokens' as t;
+
+/* ---- Page header ---- */
+.sw-page {
+  margin-top: -0.5rem;
+}
+
+.sw-page-header {
+  padding-bottom: t.$space-7;
+  margin-bottom: t.$space-7;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.sw-eyebrow {
+  margin: 0 0 t.$space-2;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
+}
+
+.sw-page-title {
+  margin: 0 0 t.$space-4;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 1.5vw + 1.5rem, 2.5rem);
+  font-weight: 600;
+  letter-spacing: t.$tracking-display;
+  color: var(--heading-color);
+}
+
+.sw-page-intro {
+  font-size: 1.02rem;
+  line-height: t.$leading-body;
+  color: var(--text-color);
+
+  a {
+    color: var(--link-color);
+    border-bottom: 1px solid var(--link-underline-color);
+    text-decoration: none;
+    transition: border-color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      border-bottom-color: var(--link-color);
+    }
+  }
+}
+
+.sw-section-label {
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
+  margin: 0 0 t.$space-4;
+  padding-bottom: t.$space-2;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.sw-featured {
+  margin-bottom: t.$space-8;
+}
+
+/* ---- Card grid ---- */
+.sw-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: t.$space-5;
+
+  @include bp.md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: t.$space-6;
+  }
+}
+
+.sw-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: t.$radius-md;
+  overflow: hidden;
+  transition:
+    border-color t.$dur-base t.$ease-out,
+    transform t.$dur-base t.$ease-out,
+    box-shadow t.$dur-base t.$ease-out;
+
+  &:hover {
+    border-color: var(--link-color);
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
+
+    .sw-card-media img {
+      transform: scale(1.04);
+    }
+  }
+}
+
+.sw-card--featured {
+  @include bp.md {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: stretch;
+
+    .sw-card-media {
+      width: 42%;
+      flex-shrink: 0;
+      /* Featured cards keep a fixed aspect for visual rhythm; height
+         can still stretch to match the body via align-items: stretch. */
+      aspect-ratio: 16 / 10;
+    }
+  }
+}
+
+/* `image_full: true` — image spans full card width on top, body stacks below.
+   Best for panoramic screenshots / GIFs that get letterboxed in the side layout. */
+.sw-card--image-full {
+  @include bp.md {
+    &.sw-card--featured {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .sw-card-media {
+      width: 100%;
+      aspect-ratio: auto;
+      border-right: 0;
+      border-bottom: 1px solid var(--main-border-color);
+    }
+
+    .sw-card-media img {
+      height: auto;
+    }
+  }
+}
+
+/* `image_fit: cover` — crop the image to fill the slot (loses edges).
+   `image_fit: contain` (default for featured) — show the full image, letterbox. */
+.sw-card--fit-cover .sw-card-media img {
+  object-fit: cover;
+}
+
+.sw-card--fit-contain .sw-card-media img {
+  object-fit: contain;
+}
+
+.sw-card-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  background-color: var(--img-bg);
+  background-image: linear-gradient(
+    135deg,
+    var(--card-bg) 0%,
+    var(--main-border-color) 100%
+  );
+  overflow: hidden;
+  border-bottom: 1px solid var(--main-border-color);
+
+  @include bp.md {
+    .sw-card--featured & {
+      border-bottom: 0;
+      border-right: 1px solid var(--main-border-color);
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* `contain` preserves the full image (good for panoramic GIFs);
+       `cover` would crop. Author trade-off: switch per-image via a
+       `image_fit: cover` front-matter field if needed. */
+    object-fit: contain;
+    transition: transform t.$dur-slow t.$ease-out;
+  }
+}
+
+.sw-card-media--blank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted-color);
+}
+
+.sw-card-glyph {
+  font-size: 1.8rem;
+  opacity: 0.4;
+}
+
+.sw-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-2;
+  padding: t.$space-5;
+  flex: 1;
+}
+
+.sw-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-1 t.$space-3;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
+}
+
+.sw-card-role {
+  color: var(--link-color);
+}
+
+.sw-card-title {
+  margin: 0;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-tight;
+  line-height: t.$leading-snug;
+
+  a {
+    color: var(--heading-color);
+    text-decoration: none;
+    transition: color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+}
+
+.sw-card-desc {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: t.$leading-snug;
+  color: var(--text-color);
+  flex: 1;
+}
+
+.sw-card-tags {
+  list-style: none;
+  margin: t.$space-1 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-1;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted-color);
+
+  li {
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: t.$radius-pill;
+  }
+}
+
+.sw-card-links {
+  list-style: none;
+  margin: t.$space-2 0 0;
+  padding: t.$space-3 0 0;
+  border-top: 1px solid var(--main-border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-3 t.$space-4;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.82rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition:
+      color t.$dur-fast t.$ease-out,
+      border-color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      color: var(--link-color);
+      border-bottom-color: var(--link-color);
+    }
+
+    i {
+      font-size: 0.85em;
+      color: var(--text-muted-color);
+    }
+  }
+}
+
+.sw-empty {
+  text-align: center;
+  color: var(--text-muted-color);
+  padding: t.$space-7 0;
+}
+
+/* ---- Detail page ---- */
+.sw-detail {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.sw-detail-header {
+  padding-bottom: t.$space-6;
+  margin-bottom: t.$space-6;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.sw-detail-title {
+  margin: 0 0 t.$space-3;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.8rem, 1.5vw + 1.2rem, 2.4rem);
+  font-weight: 600;
+  letter-spacing: t.$tracking-display;
+  color: var(--heading-color);
+}
+
+.sw-detail-desc {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: t.$leading-snug;
+  color: var(--text-color);
+  max-width: 38em;
+}
+
+.sw-detail-links {
+  margin-top: t.$space-4;
+  padding-top: 0;
+  border-top: 0;
+}

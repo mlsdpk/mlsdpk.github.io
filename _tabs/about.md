@@ -2,6 +2,7 @@
 layout: page
 icon: fas fa-user
 order: 1
+wide: true
 ---
 
 I envision a future where robots work closely with humans across various industries, seamlessly generating and executing complex motion trajectories in real-time while reasoning deeply across tasks. Achieving this level of human-like intelligence requires not only advanced engineering but also innovative approaches to planning and control algorithms. This vision led me to pursue a PhD in Robotics under [Prof. Jonathan Kelly](https://discover.research.utoronto.ca/20331-jonathan-kelly) in the [STARS Laboratory](https://starslab.ca) at the University of Toronto. My research focuses on exploring how geometric approaches can be leveraged to solve complex motion planning problems. I am deeply fascinated by the mathematical elegance these methods offer and their potential to transform robotics.

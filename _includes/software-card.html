@@ -1,0 +1,58 @@
+{%- assign proj = include.proj -%}
+{%- assign primary = proj.github | default: proj.homepage | default: proj.url -%}
+
+<article class="sw-card{% if include.featured %} sw-card--featured{% endif %}{% if proj.image_full %} sw-card--image-full{% endif %}{% if proj.image_fit %} sw-card--fit-{{ proj.image_fit }}{% endif %}">
+  {% if proj.image %}
+    <a class="sw-card-media" href="{{ primary }}"{% if primary contains '://' %} target="_blank" rel="noopener"{% endif %} tabindex="-1" aria-hidden="true">
+      <img
+        src="{{ proj.image | relative_url }}"
+        alt=""
+        loading="lazy">
+    </a>
+  {% else %}
+    <a class="sw-card-media sw-card-media--blank" href="{{ primary }}"{% if primary contains '://' %} target="_blank" rel="noopener"{% endif %} tabindex="-1" aria-hidden="true">
+      <span class="sw-card-glyph"><i class="fas fa-code"></i></span>
+    </a>
+  {% endif %}
+
+  <div class="sw-card-body">
+    <div class="sw-card-meta">
+      {% if proj.role %}<span class="sw-card-role">{{ proj.role }}</span>{% endif %}
+      {% if proj.year %}<span class="sw-card-year">{{ proj.year }}</span>{% endif %}
+      {% if proj.language %}<span class="sw-card-lang">{{ proj.language }}</span>{% endif %}
+    </div>
+
+    <h3 class="sw-card-title">
+      <a href="{{ primary }}"{% if primary contains '://' %} target="_blank" rel="noopener"{% endif %}>
+        {{ proj.display_name | default: proj.name }}
+      </a>
+    </h3>
+
+    {% if proj.description %}
+      <p class="sw-card-desc">{{ proj.description }}</p>
+    {% endif %}
+
+    {% if proj.tags and proj.tags.size > 0 %}
+      <ul class="sw-card-tags">
+        {% for tag in proj.tags %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <ul class="sw-card-links">
+      {% if proj.github %}
+        <li><a href="{{ proj.github }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a></li>
+      {% endif %}
+      {% if proj.docs %}
+        <li><a href="{{ proj.docs }}" target="_blank" rel="noopener"><i class="fas fa-book"></i> Docs</a></li>
+      {% endif %}
+      {% if proj.homepage %}
+        <li><a href="{{ proj.homepage }}" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Site</a></li>
+      {% endif %}
+      {% if proj.paper %}
+        <li><a href="{{ proj.paper }}" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i> Paper</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</article>

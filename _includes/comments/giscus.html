@@ -33,8 +33,15 @@
       giscusNode.setAttribute(key, value)
     );
 
-    const $footer = document.querySelector('footer');
-    $footer.insertAdjacentElement("beforebegin", giscusNode);
+    /* Insert inside the post's tail container so the widget inherits
+       the main column width rather than spanning the whole viewport. */
+    const $tail = document.getElementById('tail-wrapper');
+    if ($tail) {
+      $tail.appendChild(giscusNode);
+    } else {
+      const $footer = document.querySelector('footer');
+      $footer.insertAdjacentElement("beforebegin", giscusNode);
+    }
 
     addEventListener('message', (event) => {
       if (event.source === window && event.data && event.data.id === Theme.ID) {

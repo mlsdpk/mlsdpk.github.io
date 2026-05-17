@@ -1,0 +1,62 @@
+/* Accessibility + print rules. */
+
+/* Visible focus ring for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Suppress animations & smooth scrolling for users who request reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print: drop site chrome, expand prose, ensure readable colors. */
+@media print {
+  #topnav,
+  #site-footer,
+  #back-to-top,
+  .topnav-toggle,
+  .pub-year-jump,
+  .home-actions,
+  .sw-card-links {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  .page-main,
+  .page-main--wide,
+  .page-main--xwide {
+    max-width: none;
+    padding: 0;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Don't break inside code blocks. */
+  pre,
+  blockquote,
+  figure {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}

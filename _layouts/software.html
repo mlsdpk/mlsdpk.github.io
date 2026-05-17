@@ -1,0 +1,41 @@
+---
+layout: default
+refactor: true
+---
+
+{% include lang.html %}
+
+<article class="sw-detail">
+  <header class="sw-detail-header">
+    <p class="sw-eyebrow">
+      {% if page.role %}{{ page.role }}{% endif %}
+      {% if page.year %} · {{ page.year }}{% endif %}
+      {% if page.language %} · {{ page.language }}{% endif %}
+    </p>
+    <h1 class="sw-detail-title">{{ page.display_name | default: page.title }}</h1>
+    {% if page.description %}
+      <p class="sw-detail-desc">{{ page.description }}</p>
+    {% endif %}
+
+    <ul class="sw-card-links sw-detail-links">
+      {% if page.github %}
+        <li><a href="{{ page.github }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a></li>
+      {% endif %}
+      {% if page.docs %}
+        <li><a href="{{ page.docs }}" target="_blank" rel="noopener"><i class="fas fa-book"></i> Docs</a></li>
+      {% endif %}
+      {% if page.homepage %}
+        <li><a href="{{ page.homepage }}" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Site</a></li>
+      {% endif %}
+      {% if page.paper %}
+        <li><a href="{{ page.paper }}" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i> Paper</a></li>
+      {% endif %}
+    </ul>
+  </header>
+
+  {% if content != blank %}
+    <div class="sw-detail-body content">
+      {{ content }}
+    </div>
+  {% endif %}
+</article>

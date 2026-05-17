@@ -146,7 +146,8 @@ pwa:
     deny_paths:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
-paginate: 10
+# `paginate` is unused — the editorial home doesn't render a paginated post list.
+# paginate: 10
 
 # The base URL of your site
 baseurl: ""
@@ -170,6 +171,8 @@ collections:
     output: true
     sort_by: order
   publications:
+    output: true
+  software:
     output: true
 
 defaults:
@@ -199,6 +202,12 @@ defaults:
     values:
       layout: publications
       permalink: /:title/
+  - scope:
+      path: ""
+      type: software
+    values:
+      layout: software
+      permalink: /software/:title/
   - scope:
       path: assets/img/favicons
     values:

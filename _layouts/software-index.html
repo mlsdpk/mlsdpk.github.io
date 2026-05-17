@@ -1,0 +1,48 @@
+---
+layout: default
+wide: true
+---
+
+{% include lang.html %}
+
+{%- assign projects = site.software | sort: 'date' | reverse -%}
+{%- assign featured = projects | where: 'featured', true -%}
+{%- assign all_listed = projects | where_exp: 'p', 'p.featured != true' -%}
+
+<article class="sw-page">
+  <header class="sw-page-header">
+    <p class="sw-eyebrow">Open source</p>
+    <h1 class="sw-page-title">{{ page.title | default: 'Software' }}</h1>
+    <div class="sw-page-intro">
+      {{ content }}
+    </div>
+  </header>
+
+  {% if featured.size > 0 %}
+    <section class="sw-featured" aria-label="Featured projects">
+      <h2 class="sw-section-label">Featured</h2>
+      <div class="sw-card-grid">
+        {% for proj in featured %}
+          {% include software-card.html proj=proj featured=true %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if all_listed.size > 0 %}
+    <section class="sw-list" aria-label="All projects">
+      {% if featured.size > 0 %}
+        <h2 class="sw-section-label">More</h2>
+      {% endif %}
+      <div class="sw-card-grid">
+        {% for proj in all_listed %}
+          {% include software-card.html proj=proj featured=false %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if projects.size == 0 %}
+    <p class="sw-empty">No projects listed yet — check back soon.</p>
+  {% endif %}
+</article>

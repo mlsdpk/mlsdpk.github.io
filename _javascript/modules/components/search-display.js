@@ -74,6 +74,11 @@ function isMobileView() {
 }
 
 export function displaySearch() {
+  /* Bail out if the search UI was removed from the layout (editorial top-nav). */
+  if (!btnSearchTrigger || !btnCancel || !input || !search) {
+    return;
+  }
+
   btnSearchTrigger.addEventListener('click', () => {
     MobileSearchBar.on();
     ResultSwitch.on();

@@ -3,9 +3,11 @@
 
 %heading {
   color: var(--heading-color);
-  font-weight: 400;
+  font-weight: 600;
   font-family: v.$font-family-heading;
-  scroll-margin-top: 3.5rem;
+  letter-spacing: -0.012em;
+  line-height: 1.25;
+  scroll-margin-top: 5rem;
 }
 
 %anchor {
@@ -42,8 +44,8 @@
 }
 
 %link-hover {
-  color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
+  color: var(--link-color) !important;
+  border-bottom: 1px solid var(--link-color);
   text-decoration: none;
 }
 

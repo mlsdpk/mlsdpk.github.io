@@ -1,0 +1,291 @@
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/tokens' as t;
+
+.home {
+  /* Override default margin so hero sits flush. */
+  margin-top: -0.5rem;
+}
+
+/* ---- Hero (pure typography; photo lives inside the bio below) ---- */
+.home-hero {
+  padding-top: t.$space-4;
+  padding-bottom: t.$space-5;
+  margin-bottom: t.$space-5;
+
+  @include bp.md {
+    padding-top: t.$space-6;
+  }
+
+  @include bp.lg {
+    padding-top: t.$space-8;
+    padding-bottom: t.$space-5;
+    margin-bottom: t.$space-6;
+  }
+
+  > * + * {
+    margin-top: t.$space-4;
+  }
+}
+
+.home-eyebrow {
+  margin: 0;
+  font-family: var(--bs-font-monospace);
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
+}
+
+.home-name {
+  margin: 0;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: t.$type-display;
+  font-weight: 600;
+  letter-spacing: t.$tracking-display;
+  line-height: t.$leading-tight;
+  color: var(--heading-color);
+}
+
+.home-tagline {
+  margin: 0;
+  font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.2rem);
+  line-height: t.$leading-snug;
+  color: var(--text-color);
+  font-weight: 400;
+  max-width: 36em;
+
+  a {
+    color: inherit;
+    border-bottom: 1.5px solid var(--link-color);
+    text-decoration: none;
+    transition: color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-2 t.$space-5;
+  margin: 0;
+  padding-top: t.$space-2;
+  font-size: 0.92rem;
+}
+
+.home-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition:
+    color t.$dur-fast t.$ease-out,
+    border-color t.$dur-fast t.$ease-out,
+    gap t.$dur-base t.$ease-out;
+
+  i {
+    font-size: 0.72rem;
+    color: var(--text-muted-color);
+    transition:
+      color t.$dur-fast t.$ease-out,
+      transform t.$dur-base t.$ease-out;
+  }
+
+  &:hover {
+    color: var(--link-color);
+    border-bottom-color: var(--link-color);
+    gap: 0.55rem;
+
+    i {
+      color: var(--link-color);
+      transform: translateX(2px);
+    }
+  }
+}
+
+/* ---- Intro prose with floated portrait ---- */
+.home-intro {
+  font-size: 1.02rem;
+  line-height: t.$leading-body;
+  color: var(--text-color);
+  margin-bottom: t.$space-8;
+
+  /* Clear any float that pokes past the last paragraph. */
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  > p {
+    margin: 0 0 t.$space-4;
+  }
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--link-color);
+    border-bottom: 1px solid var(--link-underline-color);
+    text-decoration: none;
+    transition: border-color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      border-bottom-color: var(--link-color);
+    }
+  }
+}
+
+.home-portrait {
+  margin: 0 0 t.$space-4;
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: t.$radius-md;
+    box-shadow: var(--card-shadow);
+  }
+
+  @include bp.md {
+    float: right;
+    margin: 0 0 t.$space-4 t.$space-6;
+    shape-outside: margin-box;
+
+    img {
+      max-width: 200px;
+    }
+  }
+
+  @include bp.lg {
+    margin: 0 0 t.$space-4 t.$space-7;
+
+    img {
+      max-width: 220px;
+    }
+  }
+}
+
+
+/* ---- Section header ---- */
+.home-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: t.$space-4;
+  padding-bottom: t.$space-3;
+  margin-bottom: t.$space-4;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.home-section-title {
+  margin: 0;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--heading-color);
+}
+
+.home-section-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted-color);
+  font-style: italic;
+}
+
+/* ---- News list ---- */
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: t.$space-4;
+  padding: t.$space-4 0;
+  border-bottom: 1px solid var(--main-border-color);
+
+  @include bp.md {
+    grid-template-columns: 86px 1fr;
+    gap: t.$space-5;
+    padding: t.$space-5 0;
+  }
+
+  &:first-child {
+    padding-top: t.$space-3;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.news-date {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.1;
+  text-align: left;
+  padding-top: 0.15rem;
+}
+
+.news-date-month {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  color: var(--link-color);
+  text-transform: uppercase;
+}
+
+.news-date-day {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: t.$tracking-tight;
+  color: var(--heading-color);
+}
+
+.news-date-year {
+  font-size: 0.7rem;
+  color: var(--text-muted-color);
+  letter-spacing: 0.04em;
+}
+
+.news-body {
+  font-size: 0.98rem;
+  line-height: t.$leading-snug;
+  color: var(--text-color);
+
+  a {
+    color: var(--link-color);
+    border-bottom: 1px solid var(--link-underline-color);
+    text-decoration: none;
+    transition: border-color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      border-bottom-color: var(--link-color);
+    }
+  }
+
+  em {
+    color: var(--text-muted-highlight-color);
+    font-style: italic;
+  }
+}

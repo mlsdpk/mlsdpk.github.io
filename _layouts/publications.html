@@ -1,26 +1,99 @@
 ---
-layout: page
+layout: default
+wide: true
 ---
 
-<div style="text-align: justify;">
-    Here is where I keep track on all my publications. I started my research journey in early 2020, 
-    earning recognition with publications in top-tier journals and conferences. 
-    Most of my work is focused on motion planning and intelligent decision making of autonomous mobile robots. 
-    Check out my <a href="https://scholar.google.com/citations?user=j3UqDSoAAAAJ&hl=en">Google Scholar profile</a> too.
-</div>
+{% include lang.html %}
 
-<div class="publications">
-    {% assign publications = site.publications | sort: 'date' | reverse %}
-    {% for publication in publications %}
-    <div class="publication">
-        <div class="publication-cover">
-            <img src="{{ publication.cover_image }}" alt="{{ publication.title }}">
-        </div>
-        <div id="publication-details">
-            <h2><a href="{{ publication.link }}">{{ publication.title }}</a></h2>
-            <p class="publication-authors">{{ publication.authors }}</p>
-            <p class="publication-venue"><i>{{ publication.venue }}, {{ publication.year }}</i></p>
-        </div>
+{%- assign owner_name = 'Phone Thiha Kyaw' -%}
+{%- capture bolded_owner -%}<strong>{{ owner_name }}</strong>{%- endcapture -%}
+{%- assign pubs = site.publications | sort: 'date' | reverse -%}
+{%- assign years = pubs | map: 'year' | uniq -%}
+
+<article class="pub-page">
+  <header class="pub-page-header">
+    <p class="pub-eyebrow">Selected research</p>
+    <h1 class="pub-page-title">Publications</h1>
+    <div class="pub-page-intro">
+      {{ content }}
     </div>
-    {% endfor %}
-</div>
+
+    {% if years.size > 1 %}
+      <nav class="pub-year-jump" aria-label="Jump to year">
+        {% for y in years %}
+          <a class="pub-year-pill" href="#year-{{ y }}">{{ y }}</a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+  </header>
+
+  {% for year in years %}
+    {%- assign year_pubs = pubs | where: 'year', year -%}
+    <section class="pub-year-block" id="year-{{ year }}">
+      <div class="pub-year-rail" aria-hidden="true">
+        <span class="pub-year-label">{{ year }}</span>
+      </div>
+
+      <div class="pub-year-list">
+        {% for publication in year_pubs %}
+          {%- assign primary = publication.link -%}
+          {%- if publication.links and publication.links.size > 0 -%}
+            {%- assign primary = publication.links[0].url -%}
+          {%- endif -%}
+
+          <article class="pub-card{% if publication.image_fit %} pub-card--fit-{{ publication.image_fit }}{% endif %}">
+            {% if publication.cover_image %}
+              <a class="pub-cover" href="{{ primary }}"{% if primary contains '://' %} target="_blank" rel="noopener"{% endif %} aria-hidden="true" tabindex="-1">
+                <img
+                  src="{{ publication.cover_image | relative_url }}"
+                  alt=""
+                  loading="lazy"
+                >
+              </a>
+            {% endif %}
+
+            <div class="pub-body">
+              {% if publication.type %}
+                <span class="pub-type pub-type--{{ publication.type | downcase | slugify }}">{{ publication.type }}</span>
+              {% endif %}
+
+              <h2 class="pub-title">{{ publication.title }}</h2>
+
+              <p class="pub-authors">
+                {{ publication.authors | replace: owner_name, bolded_owner }}
+              </p>
+
+              <p class="pub-venue">
+                <em>{{ publication.venue }}</em>{% if publication.year %}, {{ publication.year }}{% endif %}
+              </p>
+
+              {% if publication.award %}
+                <p class="pub-award"><i class="fas fa-award" aria-hidden="true"></i> {{ publication.award }}</p>
+              {% endif %}
+
+              {% if publication.links and publication.links.size > 0 %}
+                <ul class="pub-links">
+                  {% for l in publication.links %}
+                    <li>
+                      <a href="{{ l.url }}"{% if l.url contains '://' %} target="_blank" rel="noopener"{% endif %}>
+                        {{ l.label }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% elsif publication.link %}
+                <ul class="pub-links">
+                  <li>
+                    <a href="{{ publication.link }}"{% if publication.link contains '://' %} target="_blank" rel="noopener"{% endif %}>
+                      Paper
+                    </a>
+                  </li>
+                </ul>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</article>
