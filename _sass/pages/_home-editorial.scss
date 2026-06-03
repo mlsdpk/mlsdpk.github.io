@@ -176,6 +176,19 @@
       max-width: 220px;
     }
   }
+
+  /* The site-wide image pipeline (refactor-content.html) wraps this eager
+     layout <img> in a lazy-loaded popup with a `shimmer` placeholder. On a
+     cached visit the `load` event that strips `.shimmer` never fires, so the
+     sweep keeps animating — a permanent flicker. The portrait needs no
+     placeholder, so suppress it here. */
+  .shimmer {
+    background: none;
+
+    &::before {
+      display: none;
+    }
+  }
 }
 
 
