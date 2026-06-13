@@ -548,6 +548,53 @@ figure {
   }
 }
 
+/* Diagram figures (SVG): white card with inner padding + rounded corners.
+   Per-figure size is set from Markdown with Chirpy's image attribute, e.g.
+   `![alt](fig.svg){: width="480" }` (the shorthand `w="480"` works too).
+   With no width given the figure spans the content column. Scoped to SVGs
+   so raster screenshots in other posts keep their natural size. */
+.content .img-link:has(> img[src$='.svg']) {
+  display: block;
+  box-sizing: border-box;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--main-border-color);
+  border-radius: 12px;
+
+  /* No shimmer sweep — the card paints its own white background. */
+  &::before {
+    display: none;
+  }
+
+  > img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+/* Default (no width in Markdown): span the column. Also gives viewBox-only
+   SVGs a definite width so they don't collapse to zero inside Chirpy's
+   inline-flex `.img-link` wrapper. */
+.content .img-link:has(> img[src$='.svg']:not([width])) {
+  width: 100%;
+  margin: 1.5rem 0 0.6rem;
+
+  > img {
+    width: 100%;
+  }
+}
+
+/* Sized (`{: width="N" }` in Markdown): the card hugs the image. Horizontal
+   centering is handled by the theme's `a.popup` rule (left:50% + translateX),
+   so margin stays 0 left/right here — adding `auto` would double-center it. */
+.content .img-link:has(> img[src$='.svg'][width]) {
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.5rem 0 0.6rem;
+}
+
 /* Post header polish */
 header h1[data-toc-skip] {
   margin-bottom: 1rem;

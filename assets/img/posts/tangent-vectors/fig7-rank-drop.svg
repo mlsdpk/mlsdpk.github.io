@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 617.43597 151.6914"
+   role="img"
+   aria-label="An extended arm at a singularity cannot produce outward velocity"
+   version="1.1"
+   id="svg13"
+   sodipodi:docname="fig7-rank-drop.svg"
+   width="617.43597"
+   height="151.69141"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.1954264"
+     inkscape:cx="342.55559"
+     inkscape:cy="73.6139"
+     inkscape:window-width="1472"
+     inkscape:window-height="891"
+     inkscape:window-x="0"
+     inkscape:window-y="37"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg13" />
+  <style
+     id="style1">text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.vec{fill:none;stroke:#bd5328;stroke-width:2.6;stroke-linecap:round}.err{fill:none;stroke:#a83232;stroke-width:2.4;stroke-linecap:round}.pt{fill:#211f1a}.lbl-r{font-size:13px;fill:#bd5328;font-weight:500}.lbl-e{font-size:13px;fill:#a83232}.panel-t{font-size:12px;letter-spacing:.1em;text-transform:uppercase;fill:#5b574c}.lnk{stroke:#211f1a;stroke-width:6;stroke-linecap:round}.lnk2{stroke:#7a7466;stroke-width:6;stroke-linecap:round}.joint{fill:#fbf8f0;stroke:#211f1a;stroke-width:2}</style>
+  <defs
+     id="defs2">
+    <marker
+       id="arrR7"
+       markerWidth="9"
+       markerHeight="9"
+       refX="6.5"
+       refY="4"
+       orient="auto">
+      <path
+         d="M 0,0 8,4 0,8 Z"
+         fill="#bd5328"
+         id="path1" />
+    </marker>
+    <marker
+       id="arrE7"
+       markerWidth="9"
+       markerHeight="9"
+       refX="6.5"
+       refY="4"
+       orient="auto">
+      <path
+         d="M 0,0 8,4 0,8 Z"
+         fill="#a83232"
+         id="path2" />
+    </marker>
+  </defs>
+  <text
+     x="-1.1425781"
+     y="9.6914062"
+     class="panel-t"
+     id="text2">fully extended (singularity)</text>
+  <line
+     x1="54.857422"
+     y1="141.69141"
+     x2="144.85742"
+     y2="141.69141"
+     stroke="#5b574c"
+     stroke-width="1.4"
+     id="line2" />
+  <g
+     stroke="#5b574c"
+     stroke-width="1"
+     opacity="0.5"
+     id="g6"
+     transform="translate(-25.142578,-18.308593)">
+    <line
+       x1="90"
+       y1="160"
+       x2="82"
+       y2="168"
+       id="line3" />
+    <line
+       x1="110"
+       y1="160"
+       x2="102"
+       y2="168"
+       id="line4" />
+    <line
+       x1="130"
+       y1="160"
+       x2="122"
+       y2="168"
+       id="line5" />
+    <line
+       x1="150"
+       y1="160"
+       x2="142"
+       y2="168"
+       id="line6" />
+  </g>
+  <line
+     x1="94.857422"
+     y1="141.69141"
+     x2="274.85742"
+     y2="91.691406"
+     class="lnk"
+     id="line7" />
+  <line
+     x1="274.85742"
+     y1="91.691406"
+     x2="444.85742"
+     y2="44.691406"
+     class="lnk2"
+     id="line8" />
+  <circle
+     cx="94.857422"
+     cy="141.69141"
+     r="9"
+     class="joint"
+     id="circle8" />
+  <circle
+     cx="274.85742"
+     cy="91.691406"
+     r="8"
+     class="joint"
+     id="circle9" />
+  <line
+     x1="444.85742"
+     y1="44.691406"
+     x2="466.85742"
+     y2="124.69141"
+     class="vec"
+     marker-end="url(#arrR7)"
+     id="line10" />
+  <text
+     x="479.12668"
+     y="112.90775"
+     class="lbl-r"
+     id="text10">can move</text>
+  <line
+     x1="444.85742"
+     y1="44.691406"
+     x2="514.85742"
+     y2="25.691406"
+     class="err"
+     stroke-dasharray="5, 5"
+     marker-end="url(#arrE7)"
+     id="line11" />
+  <line
+     x1="526.36469"
+     y1="21.203899"
+     x2="540.36469"
+     y2="35.203899"
+     class="err"
+     id="line12" />
+  <line
+     x1="540.36469"
+     y1="21.203899"
+     x2="526.36469"
+     y2="35.203899"
+     class="err"
+     id="line13" />
+  <circle
+     cx="444.85742"
+     cy="44.691406"
+     r="5"
+     class="pt"
+     id="circle10" />
+  <text
+     x="467.76895"
+     y="17.147169"
+     class="lbl-e"
+     id="text13">can't move outward</text>
+</svg>

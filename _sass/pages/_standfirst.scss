@@ -1,0 +1,13 @@
+// Optional italic "standfirst" (lede) shown under a post title.
+//
+// Opt in per-post by adding a `standfirst:` line to the front matter; the
+// text then renders as an italic standfirst, like the original HTML article.
+// Posts that don't set it fall back to the normal `description` styling.
+.post-standfirst {
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-muted-color);
+  max-width: 40rem;
+}
