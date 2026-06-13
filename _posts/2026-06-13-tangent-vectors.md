@@ -1,6 +1,6 @@
 ---
 title:  "Tangent Vectors Are Just Directional Derivatives"
-date: 2026-06-14
+date: 2026-06-13
 categories: [Robotics]
 tags: [geometry, math]
 comments: true
