@@ -1,0 +1,4 @@
+# Host self-contained slide decks here, one folder per talk:
+#   assets/slides/<talk-slug>/index.html  (+ its asset subfolders)
+# Link to a deck from a publication's `links:` array (label: Slides).
+# Full workflow: docs/slides-workflow.md
