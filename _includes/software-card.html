@@ -1,5 +1,5 @@
 {%- assign proj = include.proj -%}
-{%- assign primary = proj.github | default: proj.homepage | default: proj.url -%}
+{%- assign primary = proj.github | default: proj.github_links[0].url | default: proj.homepage | default: proj.url -%}
 
 <article class="sw-card{% if include.featured %} sw-card--featured{% endif %}{% if proj.image_full %} sw-card--image-full{% endif %}{% if proj.image_fit %} sw-card--fit-{{ proj.image_fit }}{% endif %}">
   {% if proj.image %}
@@ -41,7 +41,11 @@
     {% endif %}
 
     <ul class="sw-card-links">
-      {% if proj.github %}
+      {% if proj.github_links and proj.github_links.size > 0 %}
+        {% for repo in proj.github_links %}
+          <li><a href="{{ repo.url }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> {{ repo.label | default: 'Code' }}</a></li>
+        {% endfor %}
+      {% elsif proj.github %}
         <li><a href="{{ proj.github }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a></li>
       {% endif %}
       {% if proj.docs %}

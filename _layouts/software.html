@@ -18,7 +18,11 @@ refactor: true
     {% endif %}
 
     <ul class="sw-card-links sw-detail-links">
-      {% if page.github %}
+      {% if page.github_links and page.github_links.size > 0 %}
+        {% for repo in page.github_links %}
+          <li><a href="{{ repo.url }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> {{ repo.label | default: 'Code' }}</a></li>
+        {% endfor %}
+      {% elsif page.github %}
         <li><a href="{{ page.github }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a></li>
       {% endif %}
       {% if page.docs %}
