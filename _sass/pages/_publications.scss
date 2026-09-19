@@ -296,12 +296,20 @@
 }
 
 .pub-award {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--prompt-warning-icon-color);
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 0.4rem;
+  margin: 0;
+  padding: 0.22rem 0.6rem;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-tight;
+  color: var(--prompt-warning-icon-color);
+  background-color: var(--prompt-warning-bg);
+  border-radius: t.$radius-xs;
 
   i {
     font-size: 0.85em;

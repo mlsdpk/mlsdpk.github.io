@@ -106,6 +106,9 @@ sections:
     content:
       - name: "Honors, Awards and Scholarships"
         entity:
+          - organization: "Best Paper Award"
+            dates: "2026"
+            position: "IEEE International Conference on Multisensor Fusion and Integration (MFI), Pilsen, Czechia"
           - organization: "Best Presenter Award"
             dates: "2022"
             position: "LionsBot International Pte Ltd, Singapore"

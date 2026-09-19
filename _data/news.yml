@@ -1,3 +1,16 @@
+- date: 2026-09-15
+  badge: Best Paper Award
+  text: >
+    Our paper *Lost in Time?* received the Best Paper Award at IEEE MFI 2026 in Pilsen, Czechia 🏆
+
+- date: 2026-09-08
+  text: >
+    Two journal acceptances: *Greedy RRT\** to [Autonomous Robots](https://link.springer.com/journal/10514) and our work on direct informed sampling on Riemannian manifolds to [RA-L](https://www.ieee-ras.org/publications/ra-l)! 🎉
+
+- date: 2026-09-01
+  text: >
+    Our work on the intrinsic geometry of diffusion models for constrained inverse kinematics has been accepted to [CoRL 2026](https://www.corl.org), and our paper on contact modes as strata to the IROS 2026 Workshop on Geometric Representations in Robotics.
+
 - date: 2026-06-15
   text: >
     I presented our paper on planning on Riemannian manifolds at [WAFR'26](https://algorithmic-robotics.org/) in Oulu, Finland 🇫🇮!

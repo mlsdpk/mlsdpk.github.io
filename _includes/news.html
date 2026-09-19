@@ -5,13 +5,20 @@
 
 <ol class="news-list">
   {%- for n in items -%}
-    <li class="news-item">
+    <li class="news-item{% if n.badge %} news-item--award{% endif %}">
       <time class="news-date" datetime="{{ n.date | date: '%Y-%m-%d' }}">
         <span class="news-date-month">{{ n.date | date: '%b' | upcase }}</span>
         <span class="news-date-day">{{ n.date | date: '%-d' }}</span>
         <span class="news-date-year">{{ n.date | date: '%Y' }}</span>
       </time>
       <div class="news-body">
+        {%- if n.badge -%}
+          <div class="news-badge-row">
+            <span class="news-badge">
+              <i class="fas fa-award" aria-hidden="true"></i>{{ n.badge }}
+            </span>
+          </div>
+        {%- endif -%}
         {{ n.text | markdownify | strip | replace: '<p>', '' | replace: '</p>', '' }}
       </div>
     </li>

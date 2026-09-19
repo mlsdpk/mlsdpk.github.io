@@ -281,6 +281,34 @@
   letter-spacing: 0.04em;
 }
 
+.news-badge-row {
+  margin-bottom: t.$space-2;
+}
+
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.22rem 0.6rem;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--prompt-warning-icon-color);
+  background-color: var(--prompt-warning-bg);
+  border-radius: t.$radius-xs;
+
+  i {
+    font-size: 0.85em;
+  }
+}
+
+.news-item--award .news-date-month {
+  color: var(--prompt-warning-icon-color);
+}
+
 .news-body {
   font-size: 0.98rem;
   line-height: t.$leading-snug;
