@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact Modes Are Strata</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/colors_and_type.css">
+<link rel="stylesheet" href="css/deck.css">
+<script src="js/deck-stage.js"></script>
+<script src="js/builds.js"></script>
+</head>
+<body>
+
+<!-- ============================================================
+     Contact Modes Are Strata · IROS 2026 workshop spotlight
+     Phone Thiha Kyaw and Jonathan Kelly · 10 min + 2-3 min Q&A
+
+     Same machinery as ../dec1 (see README.md):
+       right / space / click     next build, then next slide
+       left                      previous build, then previous slide
+       down / up                 skip the builds
+       F                         full screen
+
+     <div data-b>                appears on a click
+     <div data-illus="name">     a generated illustration (js/illus.js)
+     <div data-anim="walk2d">    the animated corner walk (js/anim.js)
+     <div class="walksync">      staircase synced to a video (js/anim.js)
+     ============================================================ -->
+
+<deck-stage width="1920" height="1080">
+
+<!-- ──────────────────── 01 · title ──────────────────── -->
+<section class="slide s-title" data-label="01 Title">
+  <h1>Contact Modes Are Strata</h1>
+  <p class="venue" style="font-style:normal;font-family:var(--sans);font-size:40px;color:var(--ink);margin-bottom:26px;max-width:1080px">What Geometric Structure Buys in Discrete&ndash;Continuous Planning</p>
+  <p class="venue" style="max-width:1200px">IROS 2026 Workshop on Geometric-Aware Representations in Robotics</p>
+  <div class="rule"></div>
+  <div class="who">Phone Thiha Kyaw and Jonathan Kelly</div>
+  <div class="when">STARS Laboratory, University of Toronto Institute for Aerospace Studies</div>
+  <div class="title-art illus" data-illus="title3d" style="--w:720px;width:720px"></div>
+  <div class="logos">
+    <img src="assets/logos/utias-uoft.png" alt="UTIAS / University of Toronto">
+    <img src="assets/logos/stars-lab.png" alt="STARS Laboratory">
+  </div>
+</section>
+
+<!-- ──────────────────── 02 · one planner, two tasks ──────────────────── -->
+<section class="slide" data-label="02 Two tasks, no modes">
+  <div class="page-num">02</div>
+  <div class="eyebrow">One Planner, Two Tasks</div>
+  <div class="grow top">
+    <p class="lead">Two contact-rich tasks, one planner, and <b>no modes given in advance</b>.</p>
+    <div class="figs top wide" style="margin-top:6px">
+      <div class="fig">
+        <video src="figures/anim-pusht-walk.mp4" poster="figures/anim-pusht-walk-poster.png" style="height:540px" muted loop playsinline preload="auto"></video>
+        <div class="figcap" style="max-width:640px">a Franka FR3 pushes a T-shaped block around obstacles</div>
+      </div>
+      <div class="fig">
+        <video src="figures/anim-leap-walk.mp4" poster="figures/anim-leap-walk-poster.png" style="height:540px" muted loop playsinline preload="auto"></video>
+        <div class="figcap" style="max-width:560px">a LEAP hand turns a cube toward a 120&deg; goal</div>
+      </div>
+    </div>
+  </div>
+  <div class="note" data-b>Neither plan receives a mode, a contact sequence, or a manifold. Each one is a
+    <b>walk over strata</b> of the configuration space, and every contact it makes and breaks follows from their geometry.</div>
+</section>
+
+<!-- ──────────────────── 03 · what planners are given ──────────────────── -->
+<section class="slide" data-label="03 What planners are given">
+  <div class="page-num">03</div>
+  <div class="eyebrow">What Planners Are Given</div>
+  <div class="grow top">
+    <p class="lead sm">Contact-rich manipulation couples a discrete choice, <b>which contacts hold</b>, with continuous motion.
+      <span class="cont">Frameworks such as these take the <b>discrete part as input</b>.</span></p>
+    <div style="display:grid;grid-template-columns:1.95fr 1fr;gap:70px;align-items:start;margin-top:6px">
+      <div class="fw">
+        <div class="h"></div><div class="h">Framework</div><div class="h">Needs as input</div>
+        <div class="illus" data-illus="fw-gcs"></div>
+        <div class="name">Graph of Convex Sets<span class="cite">Marcucci et al. 2024</span></div>
+        <div class="needs">a convex decomposition</div>
+        <div class="rowline"></div>
+        <div class="illus" data-illus="fw-lgp"></div>
+        <div class="name">Logic-Geometric Programming<span class="cite">Toussaint 2015</span></div>
+        <div class="needs">a symbolic domain</div>
+        <div class="rowline"></div>
+        <div class="illus" data-illus="fw-mmp"></div>
+        <div class="name">Multi-Modal Motion Planning<span class="cite">Hauser &amp; Latombe 2010</span></div>
+        <div class="needs">a mode family</div>
+        <div class="rowline"></div>
+        <div class="illus" data-illus="fw-seq"></div>
+        <div class="name">Planning on Sequenced Manifolds<span class="cite">Englert et al. 2020</span></div>
+        <div class="needs">the manifold sequence itself</div>
+        <div class="rowline" style="background:var(--accent-lt)"></div>
+        <div class="illus" data-illus="fw-ours" data-b="3"></div>
+        <div class="name ours" data-b="3" style="color:var(--accent)">This work</div>
+        <div class="needs ours" data-b="3"><b>signed distances</b> and gradients, from a collision engine</div>
+      </div>
+      <div style="padding-top:30px">
+        <div data-b="1">
+          <div class="modes">
+            <div class="row"><span class="pat"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pat"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="pat"><i class="on"></i><i class="on"></i><i></i><i class="on"></i></span><span class="pat"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+            <div class="row"><span class="pat"><i class="on"></i><i></i><i class="on"></i><i class="on"></i></span><span class="pat"><i class="on"></i><i></i><i class="on"></i><i></i></span><span class="pat"><i class="on"></i><i></i><i></i><i class="on"></i></span><span class="pat"><i class="on"></i><i></i><i></i><i></i></span></div>
+            <div class="row"><span class="pat"><i></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="pat"><i></i><i class="on"></i><i class="on"></i><i></i></span><span class="pat"><i></i><i class="on"></i><i></i><i class="on"></i></span><span class="pat"><i></i><i class="on"></i><i></i><i></i></span></div>
+            <div class="row"><span class="pat"><i></i><i></i><i class="on"></i><i class="on"></i></span><span class="pat"><i></i><i></i><i class="on"></i><i></i></span><span class="pat"><i></i><i></i><i></i><i class="on"></i></span><span class="pat"><i></i><i></i><i></i><i></i></span></div>
+          </div>
+          <p class="modes-cap">4 fingertips, each on or off the cube, give 2<sup>4</sup>&thinsp;=&thinsp;16 contact modes</p>
+        </div>
+        <div data-b="2">
+          <table class="count">
+            <tr><th>pairs that could touch</th><th>contact modes</th></tr>
+            <tr><td>4 <span class="lbl">fingertips</span></td><td>16</td></tr>
+            <tr><td>10</td><td>1,024</td></tr>
+            <tr class="hand"><td>240 <span class="lbl">the hand</span></td><td>2<sup>240</sup> &asymp; 10<sup>72</sup></td></tr>
+          </table>
+          <p class="body cite" style="margin-top:16px">Most of these modes are infeasible, since many contacts cannot occur simultaneously, and finding the feasible ones is itself a planning problem.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────── 04 · every contact removes a dimension ──────────────────── -->
+<section class="slide" data-label="04 Contacts remove dimensions">
+  <div class="page-num">04</div>
+  <div class="eyebrow">The Coupling</div>
+  <div class="grow top">
+    <p class="lead">Every contact the robot holds <b>removes one dimension</b> from its motion.</p>
+    <div class="panels" style="gap:70px;margin-top:10px">
+      <div class="panel">
+        <div class="illus" data-illus="cd-free" style="--w:500px"></div>
+        <div class="ph">free space</div>
+        <div class="dimtag" style="color:var(--ink)">dim 2</div>
+      </div>
+      <div class="panel" data-b="1">
+        <div class="illus" data-illus="cd-floor" style="--w:500px"></div>
+        <div class="ph" style="color:var(--floor)">on the floor</div>
+        <div class="dimtag" style="color:var(--floor)">dim 1</div>
+      </div>
+      <div class="panel" data-b="2">
+        <div class="illus" data-illus="cd-corner" style="--w:500px"></div>
+        <div class="ph" style="color:var(--corner)">in the corner</div>
+        <div class="dimtag" style="color:var(--corner)">dim 0</div>
+      </div>
+    </div>
+  </div>
+  <div class="note" data-b="3">A configuration space glued together from manifolds of different dimensions is a
+    <b>stratified space</b>, and those manifolds are its <b>strata</b>. The idea entered robotics
+    through legged locomotion and finger gaiting <span class="cite">[Goodwine &amp; Burdick 2002]</span>
+    and was set aside as impractical <span class="cite">[Bretl et al. 2005]</span>. Constraint
+    projection and fast collision engines have matured since.</div>
+</section>
+
+<!-- ──────────────────── 05 · strata from signed distances ──────────────────── -->
+<section class="slide" data-label="05 Strata from signed distances">
+  <div class="page-num">05</div>
+  <div class="eyebrow">Strata from Signed Distances</div>
+  <div class="grow top">
+    <p class="lead">Group configurations by <b>which signed distances vanish</b>.
+      <span class="cont">Each group is a manifold with its own dimension.</span></p>
+    <div class="illus" data-illus="strata" style="margin-top:-4px;--w:1400px"></div>
+    <div class="eq-row" style="gap:150px;margin-top:18px" data-b="2">
+      <img class="eq" src="figures/eq/stratum.svg" style="height:54px" alt="stratum definition">
+      <img class="eq" src="figures/eq/dim.svg" style="height:48px" alt="dimension and tangent space">
+    </div>
+  </div>
+  <div class="note" data-b="3">When the active gradients are linearly independent, the regular value theorem makes
+    each stratum an embedded submanifold. A collision engine provides
+    <span class="t-math">&phi;<sub>i</sub></span> and <span class="t-math">&nabla;&phi;<sub>i</sub></span>,
+    and the construction <b>needs nothing more</b>.</div>
+</section>
+
+<!-- ──────────────────── 06 · a plan is a walk over strata ──────────────────── -->
+<section class="slide" data-label="06 A plan is a walk over strata">
+  <div class="page-num">06</div>
+  <div class="eyebrow">Contact Modes Are Strata</div>
+  <div class="grow top">
+    <p class="lead">A contact mode <b>is</b> a stratum. A plan is a <b>walk over strata</b>,
+      <span class="cont">following a geodesic within each one.</span></p>
+    <div class="illus" data-anim="walk2d" data-illus="walk2d" style="margin-top:-10px;--w:1440px"></div>
+    <div class="readout" data-readout style="margin-top:0;margin-left:620px"></div>
+  </div>
+  <div class="note" data-b>Strata meet along their boundaries. Making contacts steps <b>down</b> the stratum
+    graph and breaking them steps back <b>up</b>. The planner never builds this graph explicitly.</div>
+</section>
+
+<!-- ─────────────────────── 07 · planning on strata ──────────── -->
+<section class="slide" data-label="07 Planning on strata">
+  <div class="page-num">07</div>
+  <div class="eyebrow">Planning on Strata</div>
+  <div class="grow top">
+    <p class="lead sm" style="margin-bottom:26px">A single-tree RRT grows over the strata.
+      <span class="cont">Lower-dimensional strata have measure zero, so we <b>project</b> samples onto them.</span></p>
+    <div class="two-col" style="grid-template-columns:790px 1fr;gap:64px;margin-top:0">
+      <div>
+        <p class="col-head">Sample, project, relabel</p>
+        <div class="illus" data-illus="projection-2" style="--w:780px;justify-content:flex-start"></div>
+      </div>
+      <div data-b="3">
+        <p class="col-head">Extend by make, move, break</p>
+        <div class="moverow"><div class="illus" data-illus="mvs-make" style="--w:220px"></div>
+          <div class="mt"><b>make</b> a new contact toward the target, if it is close enough</div></div>
+        <div class="moverow"><div class="illus" data-illus="mvs-move" style="--w:220px"></div>
+          <div class="mt"><b>move</b> along the stratum, a discrete geodesic of projected steps</div></div>
+        <div class="moverow"><div class="illus" data-illus="mvs-break" style="--w:220px"></div>
+          <div class="mt"><b>break</b> a contact to move toward the target</div></div>
+      </div>
+    </div>
+    <div class="eqrow" data-b="1">
+      <img class="eq" src="figures/eq/projection.svg" style="height:56px;margin:0" alt="projection step">
+      <p class="eqcap">Each Newton step uses only the signed distances and their gradients.</p>
+    </div>
+  </div>
+  <div class="note" data-b="4">Relabeling allows the planner to <b>discover strata automatically</b>, and by construction every
+    path in the tree is a hybrid path (a <b>discrete</b> sequence of strata with <b>continuous</b> motion within each).</div>
+</section>
+
+<!-- ──────────────────── 08 · T-block ──────────────────── -->
+<section class="slide" data-label="08 T-block result">
+  <div class="page-num">08</div>
+  <div class="eyebrow">Franka FR3 <span class="soft">&middot; T-shaped block around obstacles</span></div>
+  <div class="grow top">
+    <p class="lead sm">The planner decides <b>which face of the T to push</b> and when to switch.
+      <span class="cont">We do not provide any contact sequence.</span></p>
+    <div class="task">
+      <video id="vid-pusht" class="vid" src="figures/anim-pusht-walk.mp4" poster="figures/anim-pusht-walk-poster.png"
+        style="width:660px;height:560px;object-fit:cover;object-position:62% 60%" muted loop playsinline preload="auto"></video>
+      <div>
+        <div class="walksync" data-walk="pusht" data-video="vid-pusht" data-w="1000" data-h="350"></div>
+        <div class="plancap">the plan in the video &middot; 8 makes, 7 breaks</div>
+        <div class="ro-row">
+          <span><span class="lbl">contacts</span> &nbsp;<span class="big" data-ro="A">0</span></span>
+          <span><span class="lbl">stratum dimension <i>n</i>&thinsp;&minus;&thinsp;# of contacts</span> &nbsp;<span class="big" data-ro="dim">10</span></span>
+        </div>
+        <div class="kv" style="margin-left:78px;margin-top:22px">
+          <div><div class="v">10</div><div class="k">dimensions</div></div>
+          <div><div class="v">22</div><div class="k">body pairs</div></div>
+          <div><div class="v">48 / 48</div><div class="k">trials solved</div></div>
+          <div><div class="v">760 ms</div><div class="k">median time</div></div>
+          <div><div class="v">5 / 4</div><div class="k">median make / break</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="note">The fastest trial takes 77&thinsp;ms. The geometry of a ten-dimensional contact problem is
+    cheap enough that <b>the discrete choice needs no search of its own</b>.</div>
+</section>
+
+<!-- ──────────────────── 09 · the hand ──────────────────── -->
+<section class="slide" data-label="09 In-hand result">
+  <div class="page-num">09</div>
+  <div class="eyebrow">LEAP Hand <span class="soft">&middot; in-hand cube reorientation</span></div>
+  <div class="grow top">
+    <p class="lead sm">One grasp cannot turn the cube by 120&deg;.
+      <span class="cont">The walk <b>becomes a gait</b>.</span></p>
+    <div class="task">
+      <video id="vid-leap" class="vid" src="figures/anim-leap-walk.mp4" poster="figures/anim-leap-walk-poster.png"
+        style="width:620px;height:620px" data-rate="2" muted loop playsinline preload="auto"></video>
+      <div>
+        <div class="walksync" data-walk="leap" data-video="vid-leap" data-w="1060" data-h="350"></div>
+        <div class="plancap">the plan in the video &middot; 46 makes, 47 breaks &middot; ends at 116&deg;, inside the goal tolerance</div>
+        <div class="ro-row">
+          <span><span class="lbl">contacts</span> &nbsp;<span class="big" data-ro="A">4</span></span>
+          <span><span class="lbl">stratum dimension <i>n</i>&thinsp;&minus;&thinsp;# of contacts</span> &nbsp;<span class="big" data-ro="dim">15</span></span>
+          <span class="tips"><i data-tip="0"></i><i data-tip="1"></i><i data-tip="2"></i><i data-tip="3"></i></span>
+        </div>
+        <div class="kv" style="margin-left:78px;margin-top:22px">
+          <div><div class="v">19</div><div class="k">dimensions</div></div>
+          <div><div class="v">240</div><div class="k">body pairs</div></div>
+          <div><div class="v">48 / 48</div><div class="k">trials solved</div></div>
+          <div><div class="v">9.9 s</div><div class="k">median time</div></div>
+          <div><div class="v">52 / 52</div><div class="k">median make / break</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="note">The fingers reach their joint limits, so the plan <b>lifts and re-places fingertips</b> to keep
+    turning. We never specified this gait.</div>
+</section>
+
+<!-- ──────────────────── 10 · open problems ──────────────────── -->
+<section class="slide" data-label="10 Open problems">
+  <div class="page-num">10</div>
+  <div class="eyebrow">Open Problems</div>
+  <div class="grow top">
+    <p class="lead">A contact mode is a stratum, but a stratum is a
+      <span class="cont"><b>richer object than a mode label</b>.</span></p>
+    <div class="cards" style="margin-top:6px">
+      <div class="card" data-b="1">
+        <div class="n">1</div>
+        <div><div class="h">Optimal walks</div>
+          <div class="p">We return the first feasible hybrid path. Optimality over walks is open.</div></div>
+      </div>
+      <div class="card" data-b="2">
+        <div class="n">2</div>
+        <div><div class="h">Forces, not only kinematics</div>
+          <div class="p">The cone and the contact count approximate quasi-static pushing. Neither checks that an
+            admissible contact wrench can carry the motion.</div></div>
+      </div>
+      <div class="card" data-b="3">
+        <div class="n">3</div>
+        <div><div class="h">Labeling strata</div>
+          <div class="p">We label a stratum by the contacts that hold, but one label can stand for a
+            <b>possibly disconnected union</b> of strata, and what that costs the planner is still unclear.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────── 11 · closing ──────────────────── -->
+<section class="slide s-title s-closing" data-label="11 Closing">
+  <h1>Contact modes are strata.<br>A plan is a <em>walk</em> over them.</h1>
+  <div class="rule" style="margin-top:20px"></div>
+  <p class="closing-body">The discrete structure comes from signed distances that a collision engine already
+    provides. We do not provide the planner with any mode, contact sequence, or stratum, and a gait emerges on its own.</p>
+  <div class="who" style="margin-top:40px">Phone Thiha Kyaw and Jonathan Kelly</div>
+  <div class="when">phone.thiha@robotics.utias.utoronto.ca</div>
+  <div class="title-art illus" data-illus="title3d-dims" style="--w:820px;width:820px;right:40px"></div>
+  <div class="logos">
+    <img src="assets/logos/utias-uoft.png" alt="UTIAS / University of Toronto">
+    <img src="assets/logos/stars-lab.png" alt="STARS Laboratory">
+  </div>
+</section>
+
+</deck-stage>
+
+<script src="js/illus.js"></script>
+<script src="figures/pusht-walk.js"></script>
+<script src="figures/leap-walk.js"></script>
+<script src="js/anim.js"></script>
+</body>
+</html>

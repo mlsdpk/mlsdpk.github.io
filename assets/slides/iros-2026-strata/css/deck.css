@@ -1,0 +1,746 @@
+/* =============================================================
+   DEC Report 1 — deck styles
+   -------------------------------------------------------------
+   Visual language lifted from the WAFR'26 Keynote deck:
+   white paper, navy ink, one warm accent, no bullets, no boxes
+   unless a slide genuinely needs them.
+
+   Colours below were sampled pixel-for-pixel out of
+   WAFR26/WAFR-slides-phone-no-animations.pdf.
+   Fonts are the same three families that deck embeds
+   (Source Sans 3 / Source Serif 4 / JetBrains Mono).
+
+   Everything is authored on a 1920x1080 frame; <deck-stage>
+   scales it to whatever the projector is.
+   ============================================================= */
+
+:root {
+  --bg:        #FFFFFF;
+  --ink:       #0A2F51;   /* lead statements, titles, body */
+  --emph:      #1E4178;   /* bold keyword inside a lead */
+  --eyebrow:   #0D427C;   /* top-left section label */
+  --pagenum:   #AEB5BC;   /* top-right numeral */
+  --caption:   #6A6A6A;   /* serif-italic figure captions */
+  --accent:    #E8702A;   /* the WAFR orange — geodesics, our method */
+  --accent-lt: #F6CBA6;
+  --frame:     #9BBBE0;   /* thin figure frames, hairlines */
+  --tint:      #F5F8FC;   /* the faintest panel fill */
+  --rule:      #C9D8E6;
+  --good:      #2E7D32;
+  --bad:       #C0392B;
+
+  --c1: #2066A8;
+  --c2: #3594CC;
+  --c3: #8CC5E3;
+  --c4: #0A2F51;
+
+  --sans:  'Source Sans 3', 'Lato', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --serif: 'Source Serif 4', 'Charter', Georgia, serif;
+  --mono:  'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --gutter: 114px;
+}
+
+html, body { margin: 0; padding: 0; background: #0b0b0b; }
+
+/* ───────────────────────── slide chrome ───────────────────────── */
+
+.slide {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 32px;
+  line-height: 1.4;
+  padding: 92px var(--gutter) 60px var(--gutter);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The middle of a slide. It takes whatever height is left over after the
+   eyebrow and the note, and centres its content vertically, so a sparse
+   slide does not collapse into the top third. */
+.grow {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/* .top is now the default; .center is the opt-in for slides that want it */
+.grow.top { justify-content: flex-start; }
+.grow.center { justify-content: center; }
+
+.eyebrow {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 0.135em;
+  text-transform: uppercase;
+  color: var(--eyebrow);
+  margin: 0 0 30px 0;
+}
+/* a lighter first half, e.g. SE(2) . NON-HOLONOMIC VEHICLES */
+.eyebrow .soft { font-weight: 400; color: #4A7AA8; }
+
+.page-num {
+  position: absolute;
+  top: 88px;
+  right: var(--gutter);
+  font-family: var(--mono);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--pagenum);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* ───────────────────────── the lead statement ───────────────────
+   Every content slide opens with one or two lines of prose.
+   No bullets anywhere in this deck — that is the house style.   */
+
+.lead {
+  font-size: 46px;
+  line-height: 1.38;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 42px 0;
+  max-width: 1660px;
+  letter-spacing: -0.003em;
+}
+.lead.sm  { font-size: 40px; }
+.lead.xs  { font-size: 34px; line-height: 1.42; }
+.lead + .lead { margin-top: -28px; }
+
+.lead em,
+.t-math {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+}
+.lead b, .emph { font-weight: 700; color: var(--emph); }
+.lead .warm { color: var(--accent); font-weight: 600; }
+
+/* second line of a lead, the one that starts with an em dash */
+.lead .cont { display: block; }
+
+/* ───────────────────────── figures ───────────────────────── */
+
+.figs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 56px;
+  width: 100%;
+}
+.figs.top    { align-items: flex-start; }
+.figs.middle { align-items: center; }
+.figs.tight  { gap: 32px; }
+.figs.wide   { gap: 96px; }
+
+.fig { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.fig img { display: block; max-width: 100%; }
+
+.figcap {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--caption);
+  text-align: center;
+  max-width: 560px;
+}
+.figcap.on  { color: var(--ink); font-style: normal; font-family: var(--sans); font-weight: 600; }
+.figlabel {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--emph);
+  text-align: center;
+}
+.figlabel.warm { color: var(--accent); }
+
+/* a full-width figure that should fill whatever room is left */
+.fig-fill { width: 100%; display: flex; justify-content: center; }
+.fig-fill img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* ───────────────────────── equations ─────────────────────────
+   Rendered by scripts/make_equations.py; the SVGs already carry
+   their slide-sized width, so no sizing is needed here.        */
+
+.eq { display: block; margin: 0 auto; }
+.eq-row { display: flex; align-items: center; justify-content: center; gap: 64px; }
+.eq-block { margin: 30px 0 34px 0; text-align: center; }
+.eq-note {
+  font-size: 27px;
+  color: var(--emph);
+  text-align: center;
+  margin-top: 12px;
+}
+.eq-note.warm { color: var(--accent); }
+
+/* ───────────────────────── bottom note ─────────────────────────
+   The WAFR deck ends several slides with a quiet aside set off
+   by a short vertical rule.                                     */
+
+.note {
+  margin-top: 40px;
+  border-left: 4px solid var(--rule);
+  padding-left: 26px;
+  font-size: 30px;
+  line-height: 1.32;
+  color: var(--ink);
+  flex: 0 0 auto;
+}
+.note b { color: var(--emph); font-weight: 700; }
+.note .warm { color: var(--accent); font-weight: 600; }
+.note em { font-family: var(--serif); font-style: italic; }
+
+/* ───────────────────────── layout helpers ───────────────────── */
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.two-col.narrow-left  { grid-template-columns: 0.82fr 1.18fr; }
+.two-col.narrow-right { grid-template-columns: 1.18fr 0.82fr; }
+.col-head {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--emph);
+  margin: 0 0 22px 0;
+}
+.col-head.warm { color: var(--accent); }
+.body { font-size: 34px; line-height: 1.42; color: var(--ink); }
+.body em { font-family: var(--serif); font-style: italic; }
+.body b  { color: var(--emph); font-weight: 700; }
+.body + .body { margin-top: 26px; }
+
+.stack { display: flex; flex-direction: column; gap: 30px; }
+.center { text-align: center; }
+.spacer { flex: 1 1 auto; }
+
+/* ───────────────────────── numbered cards ─────────────────────
+   Used sparingly: the limitations slide and the outputs slide.  */
+
+.cards { display: flex; flex-direction: column; gap: 26px; }
+.card {
+  border: 2px solid #DCE7F2;
+  border-radius: 4px;
+  padding: 30px 38px;
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.card .n {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--emph); color: #fff;
+  font-size: 28px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.card .h { font-size: 34px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.card .h b { color: var(--emph); font-weight: 700; }
+.card .p  { font-size: 28px; color: #33506B; line-height: 1.34; }
+.card .p em { font-family: var(--serif); font-style: italic; }
+
+/* ───────────────────────── data table ───────────────────────── */
+
+table.data {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 30px;
+  color: var(--ink);
+}
+table.data th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--eyebrow);
+  padding: 0 24px 14px 0;
+  border-bottom: 2px solid var(--emph);
+  white-space: nowrap;
+}
+table.data td {
+  padding: 18px 24px 18px 0;
+  border-bottom: 1px solid #E3EAF2;
+  font-variant-numeric: tabular-nums;
+}
+table.data td.num { font-family: var(--mono); font-size: 28px; }
+table.data tr.ours td { color: var(--accent); font-weight: 600; }
+table.data tr.ours td.num { font-weight: 700; }
+table.data td .sd { color: #8A97A5; font-size: 24px; }
+
+/* ───────────────────────── stat strip ───────────────────────── */
+
+.stats { display: flex; gap: 90px; justify-content: flex-start; }
+.stat .v {
+  font-size: 84px; font-weight: 700; line-height: 1;
+  color: var(--accent); letter-spacing: -0.02em;
+}
+.stat .v.cool { color: var(--emph); }
+.stat .k {
+  font-size: 27px; color: var(--caption); margin-top: 14px;
+  font-family: var(--serif); font-style: italic; line-height: 1.3;
+}
+
+/* ───────────────────────── section divider ──────────────────── */
+
+.s-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: var(--gutter);
+}
+.s-section .num {
+  font-family: var(--mono);
+  font-size: 32px;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+.s-section .rule {
+  width: 132px; height: 2px; background: var(--ink); margin-bottom: 64px;
+}
+.s-section h2 {
+  font-size: 96px; font-weight: 700; line-height: 1.02;
+  letter-spacing: -0.018em; color: var(--ink); margin: 0 0 24px 0;
+}
+.s-section .sub {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: 38px; color: var(--ink); margin: 0;
+}
+
+/* ───────────────────────── title + closing ──────────────────── */
+
+.s-title { display: flex; flex-direction: column; justify-content: center; padding: 120px var(--gutter); }
+.s-title h1 {
+  font-size: 78px; font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.018em; color: var(--ink); margin: 0 0 26px 0;
+  max-width: 1500px;
+}
+.s-title .venue {
+  font-family: var(--serif); font-style: italic; font-size: 36px;
+  color: var(--emph); margin: 0 0 58px 0;
+}
+.s-title .rule { width: 96px; height: 2px; background: var(--emph); margin-bottom: 34px; }
+.s-title .who  { font-size: 34px; color: var(--ink); margin-bottom: 10px; }
+.s-title .who .sup { color: var(--caption); }
+.s-title .when { font-size: 30px; color: var(--caption); }
+
+.logos {
+  position: absolute; left: var(--gutter); bottom: 64px;
+  display: flex; align-items: center; gap: 64px;
+}
+.logos img { height: 92px; display: block; }
+
+.title-art {
+  position: absolute; right: 90px; top: 50%; transform: translateY(-50%);
+  width: 720px; opacity: 0.96;
+}
+.title-art img { width: 100%; display: block; }
+
+/* ───────────────────────── print ───────────────────────── */
+
+@media print {
+  html, body { background: #fff; }
+}
+
+/* ───────────────────────── pseudocode ─────────────────────────
+   Only one slide uses this; Algorithm 1 of the RA-L paper.     */
+
+pre.algo {
+  font-family: var(--mono);
+  font-size: 27px;
+  line-height: 1.62;
+  color: var(--ink);
+  background: var(--tint);
+  border-left: 4px solid var(--emph);
+  padding: 30px 34px;
+  margin: 0;
+  white-space: pre;
+}
+pre.algo b  { color: var(--emph); font-weight: 700; }
+pre.algo .v { font-family: var(--serif); font-style: italic; font-weight: 600; }
+pre.algo .ln { color: #9FB0C1; }
+
+/* status column on the outputs table */
+table.data td.ok   { color: var(--good); font-weight: 600; }
+table.data td.pend { color: var(--caption); font-weight: 600; }
+
+/* ───────────────────── small additions ───────────────────── */
+
+/* inline reference list under a column of prose */
+.body.cite, .cite {
+  font-size: 27px;
+  color: #7A8A99;
+  line-height: 1.34;
+}
+.eq-note .cite { font-size: 25px; }
+
+/* the two research threads strip on the "gap" slide */
+.threads { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 66px; }
+.thread { display: grid; grid-template-columns: 74px 1fr; gap: 24px; align-items: start; }
+.thread .t-num {
+  font-family: var(--mono);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--ink);
+  padding-top: 4px;
+  border-top: 2px solid var(--ink);
+}
+.thread .t-h { font-size: 34px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.thread .t-p { font-size: 29px; color: #3C566F; line-height: 1.32; }
+.thread .t-tag {
+  margin-top: 12px;
+  font-size: 25px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* title + closing --------------------------------------------------- */
+
+.s-title h1 { max-width: 1160px; font-size: 72px; }
+.s-title .venue, .s-title .rule, .s-title .who, .s-title .when { max-width: 1000px; }
+
+.title-art {
+  position: absolute;
+  right: 72px;
+  bottom: 176px;
+  width: 620px;
+}
+
+.s-closing h1 { font-size: 72px; max-width: 1120px; }
+.s-closing h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.closing-body {
+  font-size: 32px;
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 980px;
+}
+
+/* a venue chip inside a card heading */
+.card .h .t-tag {
+  display: inline-block;
+  margin-left: 14px;
+  vertical-align: 3px;
+  font-size: 23px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* a longer table that has to fit one slide */
+table.data.compact { font-size: 27px; }
+table.data.compact td { padding: 13px 22px 13px 0; line-height: 1.24; }
+table.data.compact th { font-size: 24px; padding-bottom: 11px; }
+table.data.compact td .sd { font-size: 22px; }
+
+/* keep the two research threads' venue badges on the same baseline even when
+   one description wraps and the other does not */
+.thread .t-p { min-height: 2.7em; }
+
+/* the convergence legend, restated as text so it is readable from the back */
+.legend-row {
+  display: flex;
+  justify-content: center;
+  gap: 92px;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: #33506B;
+}
+.legend-row b { color: var(--emph); font-weight: 700; margin-right: 12px; }
+
+/* ───────────────────────── click-to-reveal builds ─────────────────────────
+   Anything with data-b waits for a click. See js/builds.js for the syntax.
+   Hidden with `visibility`, never `display`, so the slide does not reflow
+   as builds land — what is already on screen stays exactly where it is.   */
+
+html[data-builds="on"] [data-b] {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 140ms ease-out;
+}
+html[data-builds="on"] [data-b][data-b-on] {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Printing and PDF export show the finished slide. */
+@media print {
+  [data-b] { visibility: visible !important; opacity: 1 !important; }
+}
+
+/* a stats strip that should sit centred under a pair of figures */
+.stats.center-row { justify-content: center; gap: 110px; }
+.stats.center-row .stat { text-align: center; }
+.stats.center-row .stat .k { max-width: 330px; margin-left: auto; margin-right: auto; }
+
+/* compact pseudocode, for the slide that pairs it with figure steps */
+pre.algo.small {
+  font-size: 23px;
+  line-height: 1.75;
+  padding: 24px 26px;
+}
+
+/* video sits on the white like any other figure */
+.fig video { display: block; border: 1px solid var(--frame); }
+
+/* colour key above a row of figure steps */
+.key-row {
+  display: flex;
+  justify-content: center;
+  gap: 54px;
+  font-size: 26px;
+  color: #33506B;
+  margin-top: 10px;
+}
+.key-row i.sw {
+  display: inline-block;
+  width: 26px; height: 13px;
+  border-radius: 2px;
+  margin-right: 12px;
+  vertical-align: 1px;
+}
+.key-row i.sw.hollow { background: none; border: 2px solid #9AA8B8; }
+
+/* pseudocode lines that map onto one figure panel */
+pre.algo .grp { color: var(--accent); }
+pre.algo .cmt { color: #8A97A5; font-style: italic; }
+
+/* slide 12: two metric groups, each showing the same plan in simulation and
+   then on hardware. One row of four so the hardware clips stay legible. */
+.metric-pairs {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  margin-top: 30px;
+}
+.pair { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.pair-imgs { display: flex; align-items: flex-start; gap: 18px; }
+.pair-imgs .fig { gap: 12px; }
+.pair-imgs img { display: block; }
+.pair .figlabel { font-size: 32px; }
+
+/* =============================================================
+   IROS'26 spotlight additions
+   ============================================================= */
+
+/* strata colours, the same ones the illustrations use */
+:root {
+  --floor: #2066A8;
+  --wall:  #3594CC;
+  --corner:#C0392B;
+  --free:  #EEF4FA;
+}
+
+.illus { display: flex; justify-content: center; }
+.illus svg { display: block; overflow: visible; }
+
+/* inline math label from figures/eq, sized to the surrounding text */
+img.m { height: 1.05em; vertical-align: -0.22em; display: inline-block; }
+img.m.sm { height: 0.95em; }
+
+/* ---- the animated corner walk (slide 7) ---- */
+.illus-svg .walk-trail { display: none; }
+.illus-svg .w2-dot { display: none; }
+.illus-svg.playing .walk-trail { display: inline; }
+.illus-svg.playing .w2-dot { display: inline; }
+.illus-svg.playing .walk-full { opacity: 0.2; }
+.illus-svg.playing .w2-ev { opacity: 0.25; transition: opacity 160ms; }
+.illus-svg.playing .w2-ev.done { opacity: 1; }
+.illus-svg [data-st] { transition: stroke-width 160ms, fill 160ms; }
+.illus-svg.playing rect[data-st].hot { fill: #E1EBF6; }
+.illus-svg.playing line[data-st].hot { stroke-width: 15; }
+.illus-svg.playing circle.st.hot { stroke-width: 7; }
+.illus-svg.playing circle.node.hot { stroke-width: 7; }
+.illus-svg.playing circle.node[data-st="0"].hot  { fill: #DCE8F4; }
+.illus-svg.playing circle.node[data-st="1"].hot  { fill: #B9D3EC; }
+.illus-svg.playing circle.node[data-st="2"].hot  { fill: #BFE0F3; }
+.illus-svg.playing circle.node[data-st="12"].hot { fill: #EFB9B2; }
+.illus-svg .w2-edge line { transition: stroke 160ms; }
+.illus-svg .w2-edge.done line { stroke: var(--accent); }
+.illus-svg .w2-edge.done polygon { fill: var(--accent); stroke: var(--accent); }
+
+.readout {
+  display: flex; align-items: baseline; justify-content: center; gap: 22px;
+  font-size: 32px; color: var(--ink); min-height: 46px;
+}
+.readout .ro-where { font-weight: 600; }
+.readout .ro-dim {
+  font-family: var(--mono); font-size: 28px; color: var(--accent);
+  border: 2px solid var(--accent-lt); border-radius: 4px; padding: 2px 12px;
+}
+
+/* ---- video + synced staircase (slides 11, 12) ---- */
+.task {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.task video, .task img.poster { display: block; }
+.task .vid { border: none; }
+.walk-svg .walk-trail { display: none; }
+.walk-svg .walk-cursor { display: none; }
+.walk-svg.playing .walk-trail { display: inline; }
+.walk-svg.playing .walk-cursor { display: inline; }
+.walk-svg.playing .walk-full { opacity: 0.28; }
+
+.ro-row {
+  display: flex; align-items: center; gap: 44px;
+  margin: 6px 0 0 78px; font-size: 30px; color: var(--ink);
+}
+.ro-row .big {
+  font-family: var(--mono); font-size: 44px; font-weight: 400;
+  color: var(--accent); min-width: 1.4ch; display: inline-block; text-align: right;
+}
+.ro-row .lbl { color: var(--caption); font-family: var(--serif); font-style: italic; font-size: 27px; }
+.tips { display: inline-flex; gap: 12px; vertical-align: middle; }
+.tips i {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2.5px solid #C3C7CD; background: #fff; display: inline-block;
+  transition: background 80ms, border-color 80ms;
+}
+.tips i.on { background: #D65E00; border-color: #A84A00; }
+
+/* a static row of fingertip patterns (slides 3, 13) */
+.dots { display: flex; gap: 10px; justify-content: center; }
+.dots i {
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 2.5px solid #C3C7CD; background: #fff; display: inline-block;
+}
+.dots i.on { background: #D65E00; border-color: #A84A00; }
+
+.kv { display: flex; gap: 64px; margin-top: 18px; }
+.kv .k { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--caption); }
+.kv .v { font-size: 40px; font-weight: 700; color: var(--emph); line-height: 1.1; }
+.kv .v.warm { color: var(--accent); }
+.kv .v small { font-size: 26px; font-weight: 400; color: var(--caption); }
+
+/* ---- frameworks table (slide 4) ---- */
+.fw { display: grid; grid-template-columns: 150px 1fr 1fr; column-gap: 40px; row-gap: 14px; align-items: center; }
+.fw .h { font-size: 24px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; color: var(--eyebrow); padding-bottom: 8px; border-bottom: 2px solid var(--emph); }
+.fw .name { font-size: 31px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.fw .name .cite { display: block; font-weight: 400; font-size: 23px; }
+.fw .needs { font-size: 31px; color: var(--ink); }
+.fw .rowline { grid-column: 1 / -1; height: 1px; background: #E3EAF2; }
+.fw .ours .name, .fw .ours.needs { color: var(--accent); }
+.fw .ours.needs b { color: var(--accent); }
+
+.bignum {
+  font-size: 112px; font-weight: 700; color: var(--accent);
+  line-height: 1; letter-spacing: -0.02em;
+}
+.bignum sup { font-size: 0.5em; vertical-align: 0.95em; margin-left: 2px; }
+
+/* ---- three panels with a heading each (slides 5, 9, 10) ---- */
+.panels { display: flex; justify-content: center; gap: 44px; }
+.panel { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.panel .ph { font-size: 31px; font-weight: 600; color: var(--emph); }
+.panel .ph .n {
+  display: inline-flex; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--emph); color: #fff; font-size: 24px; font-weight: 700;
+  align-items: center; justify-content: center; margin-right: 12px; vertical-align: 3px;
+}
+.panel .pp { font-size: 27px; line-height: 1.34; color: #33506B; max-width: 440px; text-align: center; }
+.panel .pp em { font-family: var(--serif); font-style: italic; }
+.panel .pp b { color: var(--emph); }
+.panel .dimtag { font-family: var(--mono); font-size: 30px; }
+
+/* ---- gait strip (slides 3, 13) ---- */
+.gait { display: flex; justify-content: center; gap: 22px; align-items: flex-start; }
+.gait .g { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.gait .g img { width: 250px; display: block; }
+.gait .kind { font-size: 26px; font-weight: 600; color: var(--ink); }
+.gait .kind.make { color: var(--accent); }
+.gait .kind .deg { font-weight: 400; color: var(--caption); font-family: var(--serif); font-style: italic; margin-left: 8px; }
+.gait .arrow { align-self: center; color: #9AA8B8; font-size: 40px; margin-top: -60px; }
+
+/* ---- reasoning chain (slide 13) ---- */
+.chain { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 34px; }
+.chain .c { border-top: 3px solid var(--emph); padding-top: 16px; font-size: 29px; line-height: 1.34; color: var(--ink); }
+.chain .c b { color: var(--emph); }
+.chain .c.last { border-top-color: var(--accent); }
+.chain .c.last b { color: var(--accent); }
+.chain .c .n { font-family: var(--mono); font-size: 24px; color: var(--caption); display: block; margin-bottom: 6px; }
+
+/* the title art and closing art share the 3D corner */
+.s-title .title-art { width: 700px; right: 60px; bottom: 170px; }
+
+/* backup divider */
+.s-backup h2 { font-size: 80px; }
+
+@media print {
+  .illus-svg .walk-full, .walk-svg .walk-full { opacity: 1 !important; }
+  .illus-svg .walk-trail, .illus-svg .w2-dot,
+  .walk-svg .walk-trail, .walk-svg .walk-cursor { display: none !important; }
+  .illus-svg .w2-ev { opacity: 1 !important; }
+  .illus-svg .w2-edge line { stroke: var(--accent) !important; }
+  .illus-svg .w2-edge polygon { fill: var(--accent) !important; stroke: var(--accent) !important; }
+}
+
+/* ---- revision 1 ---- */
+.fig video, .task video { border: none; }
+.illus svg { width: var(--w, auto); height: auto; }
+img.m { height: 1.5em; vertical-align: -0.5em; }
+.kv { gap: 40px; flex-wrap: nowrap; }
+.kv .k, .kv .v { white-space: nowrap; }
+@media print {
+  .ro-row, .readout { visibility: hidden !important; }
+}
+
+/* ---- revision 2 ---- */
+.plancap {
+  margin: -4px 0 0 78px; font-family: var(--serif); font-style: italic;
+  font-size: 25px; color: var(--caption);
+}
+.gait .kind { color: var(--ink); }
+.gait .kind .tri { font-size: 22px; margin-right: 8px; vertical-align: 2px; color: var(--accent-dk, #B9531A); }
+.chain .c.last { border-top-color: var(--emph); }
+.chain .c.last b { color: var(--emph); }
+.gait .g img { width: 312px; }
+.card .h { font-size: 36px; }
+.card .p { font-size: 30px; }
+.cards { gap: 30px; }
+
+/* ---- revision 3: the condensed planning slide ---- */
+.moverow { display: grid; grid-template-columns: 220px 1fr; gap: 26px; align-items: center; margin-bottom: 14px; }
+.moverow .mt { font-size: 29px; line-height: 1.32; color: var(--ink); }
+.moverow .mt b { color: var(--emph); }
+table.data td i { font-family: var(--serif); }
+
+/* ---- revision 4: counting contact modes on slide 3 ---- */
+.modes { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.modes .row { display: flex; gap: 22px; }
+.modes .pat { display: inline-flex; gap: 4px; }
+.modes .pat i {
+  width: 16px; height: 16px; border-radius: 50%; box-sizing: border-box;
+  border: 2px solid #C3C7CD; background: #fff; display: inline-block;
+}
+.modes .pat i.on { background: #D65E00; border-color: #A84A00; }
+.modes-cap { font-size: 27px; line-height: 1.3; text-align: center; margin: 16px 0 0 0; color: var(--ink); }
+table.count { width: 100%; border-collapse: collapse; margin-top: 34px; font-size: 30px; color: var(--ink); }
+table.count th {
+  font-size: 22px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--eyebrow); text-align: left; padding: 0 0 10px 0; border-bottom: 2px solid var(--emph);
+}
+table.count td { padding: 10px 0; border-bottom: 1px solid #E3EAF2; font-variant-numeric: tabular-nums; }
+table.count th:last-child, table.count td:last-child { text-align: right; }
+table.count td .lbl { font-family: var(--serif); font-style: italic; font-size: 25px; color: var(--caption); margin-left: 8px; }
+table.count tr.hand td { font-size: 40px; font-weight: 700; color: var(--emph); border-bottom: none; padding-top: 16px; }
+table.count tr.hand td .lbl { font-weight: 400; }
+
+/* ---- revision 5: what the projection step on slide 7 is for ---- */
+.eqrow { display: flex; align-items: center; gap: 48px; margin-top: 4px; }
+.eqcap { margin: 0; font-family: var(--serif); font-style: italic; font-size: 27px; color: var(--caption); }

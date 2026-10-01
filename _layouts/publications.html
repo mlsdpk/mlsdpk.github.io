@@ -7,8 +7,9 @@ wide: true
 
 {%- assign owner_name = 'Phone Thiha Kyaw' -%}
 {%- capture bolded_owner -%}<strong>{{ owner_name }}</strong>{%- endcapture -%}
+{%- comment -%} `date` is the first submission date (arXiv v1), so newer work sits on top within a year. {%- endcomment -%}
 {%- assign pubs = site.publications | sort: 'date' | reverse -%}
-{%- assign years = pubs | map: 'year' | uniq -%}
+{%- assign years = pubs | map: 'year' | uniq | sort | reverse -%}
 
 <article class="pub-page">
   <header class="pub-page-header">
