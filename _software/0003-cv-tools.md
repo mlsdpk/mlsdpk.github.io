@@ -11,5 +11,5 @@ description: >-
 tags: [latex, cv, yaml]
 github: https://github.com/mlsdpk/cv-tools
 image: /assets/img/software/cv-tools-cover.png
-featured: true
+image_aspect: 3 / 2
 ---

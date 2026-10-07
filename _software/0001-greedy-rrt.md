@@ -16,6 +16,5 @@ github_links:
     url: https://github.com/kavrakilab/vamp
 paper: https://arxiv.org/abs/2405.03411
 image: /assets/img/software/grrtstar.gif
-# image_full: true
-featured: true
+image_aspect: 3 / 2
 ---

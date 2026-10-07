@@ -1,0 +1,80 @@
+{%- comment -%}
+  A featured project, with the projects that name it as `parent` listed underneath.
+  The project is kept in `feature`, not `proj`: an `assign proj` here would be shadowed by
+  a caller's `for proj in ...` loop variable.
+{%- endcomment -%}
+{%- assign feature = include.proj -%}
+{%- assign feature_url = feature.github | default: feature.github_links[0].url | default: feature.homepage | default: feature.url -%}
+{%- assign feature_label = feature.display_name | default: feature.name -%}
+{%- assign children = site.software | where: 'parent', feature.name | sort: 'date' -%}
+
+<article class="sw-feature">
+  <div class="sw-feature-main">
+    {% if feature.video or feature.image %}
+      <figure class="sw-feature-figure">
+        <a
+          class="sw-media{% if feature.image_fit %} sw-media--{{ feature.image_fit }}{% endif %}"
+          href="{{ feature_url }}"{% if feature_url contains '://' %} target="_blank" rel="noopener"{% endif %}
+          {% if feature.image_aspect %}style="aspect-ratio: {{ feature.image_aspect }}"{% endif %}
+          tabindex="-1"
+          aria-hidden="true">
+          {% include software-media.html proj=feature %}
+        </a>
+        {% if feature.caption %}
+          <figcaption>{{ feature.caption }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
+
+    <div class="sw-feature-body">
+      <div class="sw-card-meta">
+        {% if feature.role %}<span class="sw-card-role">{{ feature.role }}</span>{% endif %}
+        {% if feature.year %}<span class="sw-card-year">{{ feature.year }}</span>{% endif %}
+        {% if feature.language %}<span class="sw-card-lang">{{ feature.language }}</span>{% endif %}
+      </div>
+
+      <h3 class="sw-feature-title">
+        <a href="{{ feature_url }}"{% if feature_url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ feature_label }}</a>
+        {% if feature.version %}
+          <a class="sw-version" href="{{ feature.release | default: feature_url }}" target="_blank" rel="noopener" aria-label="Release {{ feature.version }}">v{{ feature.version }}</a>
+        {% endif %}
+      </h3>
+
+      {% if feature.description %}
+        <p class="sw-feature-desc">{{ feature.description }}</p>
+      {% endif %}
+
+      {% if feature.tags and feature.tags.size > 0 %}
+        <ul class="sw-card-tags">
+          {% for tag in feature.tags %}
+            <li>{{ tag }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="sw-feature-bar">
+    {% if feature.install %}
+      <div class="sw-install">
+        <span class="sw-install-prompt" aria-hidden="true">$</span>
+        <code>{{ feature.install }}</code>
+        <button type="button" class="sw-install-copy" data-copy="{{ feature.install }}" aria-label="Copy the install command">
+          <i class="far fa-copy" aria-hidden="true"></i>
+        </button>
+      </div>
+    {% endif %}
+
+    {% include software-links.html proj=feature class="sw-card-links--buttons" %}
+  </div>
+
+  {% if children.size > 0 %}
+    <div class="sw-feature-children">
+      <p class="sw-feature-children-label">Built on {{ feature_label }}</p>
+
+      {% for child in children %}
+        {% include software-card.html proj=child nested=true %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</article>

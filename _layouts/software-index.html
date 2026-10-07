@@ -5,7 +5,10 @@ wide: true
 
 {% include lang.html %}
 
-{%- assign projects = site.software | sort: 'date' | reverse -%}
+{%- comment -%}
+  A project with `parent: <name>` is listed under that featured project, not on its own.
+{%- endcomment -%}
+{%- assign projects = site.software | where_exp: 'p', 'p.parent == nil' | sort: 'date' | reverse -%}
 {%- assign featured = projects | where: 'featured', true -%}
 {%- assign all_listed = projects | where_exp: 'p', 'p.featured != true' -%}
 
@@ -21,22 +24,20 @@ wide: true
   {% if featured.size > 0 %}
     <section class="sw-featured" aria-label="Featured projects">
       <h2 class="sw-section-label">Featured</h2>
-      <div class="sw-card-grid">
-        {% for proj in featured %}
-          {% include software-card.html proj=proj featured=true %}
-        {% endfor %}
-      </div>
+      {% for proj in featured %}
+        {% include software-feature.html proj=proj %}
+      {% endfor %}
     </section>
   {% endif %}
 
   {% if all_listed.size > 0 %}
     <section class="sw-list" aria-label="All projects">
       {% if featured.size > 0 %}
-        <h2 class="sw-section-label">More</h2>
+        <h2 class="sw-section-label">More projects</h2>
       {% endif %}
-      <div class="sw-card-grid">
+      <div class="sw-card-list">
         {% for proj in all_listed %}
-          {% include software-card.html proj=proj featured=false %}
+          {% include software-card.html proj=proj %}
         {% endfor %}
       </div>
     </section>
@@ -46,3 +47,29 @@ wide: true
     <p class="sw-empty">No projects listed yet — check back soon.</p>
   {% endif %}
 </article>
+
+<script>
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.sw-media video').forEach(function (video) {
+        video.removeAttribute('autoplay');
+        video.pause();
+      });
+    }
+
+    document.querySelectorAll('.sw-install-copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (!navigator.clipboard) return;
+        navigator.clipboard.writeText(btn.dataset.copy).then(function () {
+          var icon = btn.querySelector('i');
+          btn.classList.add('is-copied');
+          icon.className = 'fas fa-check';
+          setTimeout(function () {
+            btn.classList.remove('is-copied');
+            icon.className = 'far fa-copy';
+          }, 1600);
+        });
+      });
+    });
+  })();
+</script>

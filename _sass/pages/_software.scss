@@ -67,138 +67,297 @@
   margin-bottom: t.$space-8;
 }
 
-/* ---- Card grid ---- */
-.sw-card-grid {
+/* ---- Featured project ---- */
+.sw-feature {
+  background-color: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: t.$radius-lg;
+  overflow: hidden;
+
+  & + & {
+    margin-top: t.$space-6;
+  }
+}
+
+.sw-feature-main {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: t.$space-5;
+  padding: t.$space-5;
 
   @include bp.md {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     gap: t.$space-6;
+    align-items: start;
+  }
+}
+
+.sw-feature-figure {
+  margin: 0;
+
+  figcaption {
+    margin-top: t.$space-2;
+    font-size: 0.78rem;
+    font-style: normal;
+    line-height: t.$leading-snug;
+    text-align: left;
+    color: var(--text-muted-color);
+  }
+}
+
+/* Framed cover of a project. 16:9 unless `image_aspect` says otherwise.
+   `image_fit: contain` shows the whole image (letterboxed); the default crops to fill. */
+.sw-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  color: var(--text-muted-color);
+  background-color: var(--main-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: t.$radius-md;
+  overflow: hidden;
+  transition: border-color t.$dur-base t.$ease-out;
+
+  &:hover {
+    border-color: var(--link-color);
+  }
+
+  img,
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.sw-media--contain {
+  img,
+  video {
+    object-fit: contain;
+  }
+}
+
+.sw-media-glyph {
+  font-size: 1.8rem;
+  opacity: 0.4;
+}
+
+.sw-feature-body {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+  min-width: 0;
+}
+
+.sw-feature-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: t.$space-2 t.$space-3;
+  margin: 0;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.6rem, 1vw + 1.3rem, 1.9rem);
+  font-weight: 600;
+  letter-spacing: t.$tracking-display;
+  line-height: t.$leading-tight;
+
+  a {
+    color: var(--heading-color);
+    text-decoration: none;
+    transition: color t.$dur-fast t.$ease-out;
+
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+
+  .sw-version {
+    padding: 0.2rem 0.55rem;
+    font-family: var(--bs-font-monospace);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.4;
+    color: var(--link-color);
+    background-color: var(--prompt-info-bg);
+    border-radius: t.$radius-pill;
+  }
+}
+
+.sw-feature-desc {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--text-color);
+}
+
+/* Install command and links, under the cover and the description. */
+.sw-feature-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-3 t.$space-5;
+  padding: t.$space-4 t.$space-5;
+  border-top: 1px solid var(--main-border-color);
+}
+
+.sw-install {
+  display: inline-flex;
+  align-items: center;
+  gap: t.$space-2;
+  min-width: 0;
+  padding: 0.3rem 0.35rem 0.3rem 0.75rem;
+  font-family: var(--bs-font-monospace);
+  font-size: 0.82rem;
+  background-color: var(--highlight-bg-color);
+  border: 1px solid var(--main-border-color);
+  border-radius: t.$radius-sm;
+
+  code {
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--text-color);
+    background: none;
+    white-space: nowrap;
+  }
+}
+
+.sw-install-prompt {
+  color: var(--text-muted-color);
+  user-select: none;
+}
+
+.sw-install-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted-color);
+  background: transparent;
+  border: 0;
+  border-radius: t.$radius-xs;
+  cursor: pointer;
+  transition:
+    color t.$dur-fast t.$ease-out,
+    background-color t.$dur-fast t.$ease-out;
+
+  &:hover {
+    color: var(--link-color);
+    background-color: var(--inline-code-bg);
+  }
+
+  &.is-copied {
+    color: var(--clipboard-checked-color);
+  }
+}
+
+/* Projects with `parent: <name>`, listed under the featured project they build on. */
+.sw-feature-children {
+  padding: t.$space-4 t.$space-5 t.$space-5;
+  border-top: 1px solid var(--main-border-color);
+  background-color: var(--main-bg);
+  background-color: color-mix(in srgb, var(--main-bg) 60%, var(--card-bg));
+}
+
+.sw-feature-children-label {
+  margin: 0 0 t.$space-4;
+  font-family:
+    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: t.$tracking-wider;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
+}
+
+/* ---- Project rows ---- */
+.sw-card-list {
+  display: grid;
+  gap: t.$space-5;
+
+  /* Once cover and text sit side by side, every row is as tall as the tallest. */
+  @include bp.sm {
+    grid-auto-rows: 1fr;
   }
 }
 
 .sw-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: t.$space-4;
+  padding: t.$space-5;
   background-color: var(--card-bg);
   border: 1px solid var(--main-border-color);
-  border-radius: t.$radius-md;
-  overflow: hidden;
+  border-radius: t.$radius-lg;
   transition:
     border-color t.$dur-base t.$ease-out,
     transform t.$dur-base t.$ease-out,
     box-shadow t.$dur-base t.$ease-out;
 
+  @include bp.sm {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: t.$space-5;
+  }
+
+  @include bp.md {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+
   &:hover {
     border-color: var(--link-color);
     transform: translateY(-2px);
     box-shadow: var(--card-shadow);
+  }
 
-    .sw-card-media img {
-      transform: scale(1.04);
-    }
+  .sw-media {
+    align-self: start;
   }
 }
 
-.sw-card--featured {
-  @include bp.md {
-    grid-column: span 2;
-    flex-direction: row;
-    align-items: stretch;
+/* A row inside a featured project: no frame of its own. */
+.sw-card--nested {
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
 
-    .sw-card-media {
-      width: 42%;
-      flex-shrink: 0;
-      /* Featured cards keep a fixed aspect for visual rhythm; height
-         can still stretch to match the body via align-items: stretch. */
-      aspect-ratio: 16 / 10;
-    }
+  &:hover {
+    transform: none;
+    box-shadow: none;
   }
-}
 
-/* `image_full: true` — image spans full card width on top, body stacks below.
-   Best for panoramic screenshots / GIFs that get letterboxed in the side layout. */
-.sw-card--image-full {
-  @include bp.md {
-    &.sw-card--featured {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .sw-card-media {
-      width: 100%;
-      aspect-ratio: auto;
-      border-right: 0;
-      border-bottom: 1px solid var(--main-border-color);
-    }
-
-    .sw-card-media img {
-      height: auto;
-    }
+  @include bp.sm {
+    grid-template-columns: 220px minmax(0, 1fr);
   }
-}
-
-/* `image_fit: cover` — crop the image to fill the slot (loses edges).
-   `image_fit: contain` (default for featured) — show the full image, letterbox. */
-.sw-card--fit-cover .sw-card-media img {
-  object-fit: cover;
-}
-
-.sw-card--fit-contain .sw-card-media img {
-  object-fit: contain;
-}
-
-.sw-card-media {
-  display: block;
-  aspect-ratio: 16 / 10;
-  background-color: var(--img-bg);
-  background-image: linear-gradient(
-    135deg,
-    var(--card-bg) 0%,
-    var(--main-border-color) 100%
-  );
-  overflow: hidden;
-  border-bottom: 1px solid var(--main-border-color);
 
   @include bp.md {
-    .sw-card--featured & {
-      border-bottom: 0;
-      border-right: 1px solid var(--main-border-color);
-    }
+    grid-template-columns: 260px minmax(0, 1fr);
   }
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    /* `contain` preserves the full image (good for panoramic GIFs);
-       `cover` would crop. Author trade-off: switch per-image via a
-       `image_fit: cover` front-matter field if needed. */
-    object-fit: contain;
-    transition: transform t.$dur-slow t.$ease-out;
+  & + & {
+    margin-top: t.$space-5;
+    padding-top: t.$space-5;
+    border-top: 1px solid var(--main-border-color);
   }
-}
 
-.sw-card-media--blank {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted-color);
-}
-
-.sw-card-glyph {
-  font-size: 1.8rem;
-  opacity: 0.4;
+  .sw-card-title {
+    font-size: 1.1rem;
+  }
 }
 
 .sw-card-body {
   display: flex;
   flex-direction: column;
   gap: t.$space-2;
-  padding: t.$space-5;
-  flex: 1;
+  min-width: 0;
 }
 
 .sw-card-meta {
@@ -269,8 +428,7 @@
 .sw-card-links {
   list-style: none;
   margin: t.$space-2 0 0;
-  padding: t.$space-3 0 0;
-  border-top: 1px solid var(--main-border-color);
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: t.$space-3 t.$space-4;
@@ -298,6 +456,22 @@
     i {
       font-size: 0.85em;
       color: var(--text-muted-color);
+    }
+  }
+}
+
+/* Links as outlined pills, for the bar of a featured project. */
+.sw-card-links--buttons {
+  margin: 0;
+  gap: t.$space-2;
+
+  a {
+    padding: 0.36rem 0.8rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: t.$radius-pill;
+
+    &:hover {
+      border-color: var(--link-color);
     }
   }
 }
@@ -340,6 +514,4 @@
 
 .sw-detail-links {
   margin-top: t.$space-4;
-  padding-top: 0;
-  border-top: 0;
 }

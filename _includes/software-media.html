@@ -1,0 +1,17 @@
+{%- comment -%}
+  A project's cover. `video` (mp4) plays muted on a loop with `image` as its poster;
+  without `video`, `image` is shown on its own (GIF, WebP, PNG, ...).
+  Reads `include.proj` directly: an `assign proj` here would be shadowed by a caller's
+  `for proj in ...` loop variable.
+{%- endcomment -%}
+
+{% if include.proj.video %}
+  <video autoplay loop muted playsinline preload="metadata"{% if include.proj.image %} poster="{{ include.proj.image | relative_url }}"{% endif %}>
+    <source src="{{ include.proj.video | relative_url }}" type="video/mp4">
+  </video>
+{% elsif include.proj.image %}
+  <img
+    src="{{ include.proj.image | relative_url }}"
+    alt=""
+    loading="lazy">
+{% endif %}

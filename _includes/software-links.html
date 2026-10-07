@@ -1,0 +1,26 @@
+{%- comment -%}
+  Reads `include.proj` directly: an `assign proj` here would be shadowed by a caller's
+  `for proj in ...` loop variable.
+{%- endcomment -%}
+
+<ul class="sw-card-links{% if include.class %} {{ include.class }}{% endif %}">
+  {% if include.proj.github_links and include.proj.github_links.size > 0 %}
+    {% for repo in include.proj.github_links %}
+      <li><a href="{{ repo.url }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> {{ repo.label | default: 'Code' }}</a></li>
+    {% endfor %}
+  {% elsif include.proj.github %}
+    <li><a href="{{ include.proj.github }}" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a></li>
+  {% endif %}
+  {% if include.proj.docs %}
+    <li><a href="{{ include.proj.docs }}" target="_blank" rel="noopener"><i class="fas fa-book"></i> Docs</a></li>
+  {% endif %}
+  {% if include.proj.homepage %}
+    <li><a href="{{ include.proj.homepage }}" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Site</a></li>
+  {% endif %}
+  {% if include.proj.paper %}
+    <li><a href="{{ include.proj.paper }}" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i> Paper</a></li>
+  {% endif %}
+  {% if include.proj.pypi %}
+    <li><a href="{{ include.proj.pypi }}" target="_blank" rel="noopener"><i class="fab fa-python"></i> PyPI</a></li>
+  {% endif %}
+</ul>
